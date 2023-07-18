@@ -1,3 +1,13 @@
 ea4bc82a6ad023ab7ee23ee620429895
-::res://::1689426071
+::res://::1689690007
 icon.svg::CompressedTexture2D::4160451237682757457::1689426061::1689426073::1::::<><>::
+README.md::TextFile::-1::1689677088::0::1::::<><>::
+::res://Data/::1689689970
+::res://Data/Enemy/::1689689954
+::res://Data/NPC/::1689689962
+::res://Data/Quest/::1689689970
+::res://DialogueNodes/::1689689991
+::res://Systems/::1689690041
+::res://Systems/Character/::1689690019
+::res://Systems/DialogueSystem/::1689690031
+::res://Systems/QuestSystem/::1689690041

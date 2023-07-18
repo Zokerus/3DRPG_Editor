@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://bjk5hnpbl1muh"]
+
+[ext_resource type="Script" path="res://DialogueNodes/StartNode.gd" id="1_bcr63"]
+[ext_resource type="Theme" uid="uid://c0e4l4pcps01s" path="res://DialogueNodes/NodeThemes.tres" id="1_yqrng"]
+
+[node name="StartNode" type="GraphNode" groups=["StartNodes"]]
+offset_right = 200.0
+offset_bottom = 90.0
+theme = ExtResource("1_yqrng")
+theme_type_variation = &"StartNode"
+title = "Start"
+position_offset = Vector2(100, 100)
+show_close = true
+resizable = true
+slot/0/left_enabled = false
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = false
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("1_bcr63")
+
+[node name="TextEdit" type="TextEdit" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Edit Text..."
+
+[connection signal="resize_request" from="." to="." method="_on_resize_request"]

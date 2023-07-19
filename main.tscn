@@ -61,7 +61,7 @@ theme = ExtResource("1_efubc")
 theme_type_variation = &"QuestButton"
 text = "Quest"
 
-[node name="Option" type="Button" parent="TabContainer/Dialogue/MarginContainer/VBoxContainer/Nodes" groups=["NodeButtons"]]
+[node name="Options" type="Button" parent="TabContainer/Dialogue/MarginContainer/VBoxContainer/Nodes" groups=["NodeButtons"]]
 layout_mode = 2
 theme = ExtResource("1_efubc")
 theme_type_variation = &"OptionsButton"
@@ -103,10 +103,17 @@ text = "Load"
 [node name="GraphEdit" type="GraphEdit" parent="TabContainer/Dialogue"]
 layout_mode = 2
 size_flags_horizontal = 3
+right_disconnects = true
 scroll_offset = Vector2(-10, 0)
 
 [node name="FileDialog" type="FileDialog" parent="TabContainer/Dialogue"]
+size = Vector2i(600, 400)
+root_subfolder = "Data"
+filters = PackedStringArray("*.tres")
 
+[connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/New" to="TabContainer/Dialogue" method="_on_new_pressed"]
+[connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/Save" to="TabContainer/Dialogue" method="_on_save_pressed"]
 [connection signal="connection_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_connection_request"]
 [connection signal="delete_nodes_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_delete_nodes_request"]
 [connection signal="disconnection_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_disconnection_request"]
+[connection signal="file_selected" from="TabContainer/Dialogue/FileDialog" to="TabContainer/Dialogue" method="_on_file_dialog_file_selected"]

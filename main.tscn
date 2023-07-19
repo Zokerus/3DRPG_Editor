@@ -113,6 +113,7 @@ filters = PackedStringArray("*.tres")
 
 [connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/New" to="TabContainer/Dialogue" method="_on_new_pressed"]
 [connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/Save" to="TabContainer/Dialogue" method="_on_save_pressed"]
+[connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/Load" to="TabContainer/Dialogue" method="_on_load_pressed"]
 [connection signal="connection_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_connection_request"]
 [connection signal="delete_nodes_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_delete_nodes_request"]
 [connection signal="disconnection_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_disconnection_request"]

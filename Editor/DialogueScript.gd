@@ -63,12 +63,17 @@ func _on_save_pressed():
 	file_dialog.file_mode = file_dialog.FILE_MODE_SAVE_FILE
 	file_dialog.access = file_dialog.ACCESS_RESOURCES
 	file_dialog.popup_centered()
+	
+func _on_load_pressed():
+	file_dialog.file_mode = file_dialog.FILE_MODE_OPEN_FILE
+	file_dialog.access = file_dialog.ACCESS_RESOURCES
+	file_dialog.popup_centered()
 
 func _on_file_dialog_file_selected(path):
 	if file_dialog.file_mode == file_dialog.FILE_MODE_SAVE_FILE:	## Save a file
 		save_data(path)
 	else:	## Load a file
-		pass
+		load_data(path)
 
 func save_data(file_path : String):
 	if !dialogue:
@@ -111,3 +116,45 @@ func save_data(file_path : String):
 	
 	if file_path != "":
 		ResourceSaver.save(dialogue, file_path) ## save data on disk
+
+func load_data(file_path : String):
+	if ResourceLoader.exists(file_path):	# check file validity
+		dialogue = ResourceLoader.load(file_path)
+	
+	if dialogue == null:	## check data in resource
+		dialogue = Dialogue.new()	##if not valid, create new dialogue resource
+		return	## leave method
+	
+	## loop all graph nodes and initiate them
+	for key in dialogue.data.keys():
+		load_node(graph_nodes[dialogue.data[key]["type"]] .instantiate(), dialogue.data[key])
+	
+	## after init graph nodes, connect them
+	for key in dialogue.data.keys():
+		var connections = dialogue.data[key]["go_to"]
+		for connection in connections:
+			if connection.size() == 3:
+				_on_graph_edit_connection_request(dialogue.data[key]["id"], connection[0], connection[1], connection[2])
+
+## load graph node detail data
+func load_node(node : GraphNode, data : Dictionary):
+	var text = ""
+	for line in data["text"]:
+		if text.length() > 0:
+			text = text + "\n"
+		text = text + line
+	node.find_child("TextEdit").text = text
+	node.name = data["id"]
+	
+	## select speaker
+	if node.title == "Dialogue" || node.title == "Option":
+		node.find_child("OptionButton").select(data["character"])
+	
+	## set QuestID, TODO, adapt to new QuestSystem
+	if node.title == "Quest":
+		node.find_child("QuestID").text = data["quest_id"]
+	
+	## set global position ind graph_edit, only needed in editor
+	add_node_to_graph(node, Vector2(data["offset_x"],data["offset_y"]), false)
+
+

@@ -1,7 +1,22 @@
-[gd_scene load_steps=3 format=3 uid="uid://b1gwyghbc47h0"]
+[gd_scene load_steps=9 format=3 uid="uid://b1gwyghbc47h0"]
 
 [ext_resource type="Script" path="res://Editor/DialogueScript.gd" id="1_5j8rx"]
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_efubc"]
+[ext_resource type="PackedScene" uid="uid://dxdfswhen6xjn" path="res://Editor/requirements.tscn" id="3_4biv7"]
+[ext_resource type="PackedScene" uid="uid://cw8a0wplbe4qw" path="res://Editor/start.tscn" id="4_v7dgy"]
+[ext_resource type="PackedScene" uid="uid://1gmaxa56qcfh" path="res://Editor/objectives.tscn" id="5_dyqg8"]
+[ext_resource type="PackedScene" uid="uid://dtyd2nmhycxm8" path="res://Editor/end.tscn" id="6_pn2ov"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.607843)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_uiffq"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_l0bgg")
 
 [node name="Main" type="Control"]
 layout_mode = 3
@@ -104,12 +119,169 @@ text = "Load"
 layout_mode = 2
 size_flags_horizontal = 3
 right_disconnects = true
-scroll_offset = Vector2(-10, 0)
 
 [node name="FileDialog" type="FileDialog" parent="TabContainer/Dialogue"]
 size = Vector2i(600, 400)
 root_subfolder = "Data"
 filters = PackedStringArray("*.tres")
+
+[node name="Quest" type="HBoxContainer" parent="TabContainer"]
+visible = false
+layout_mode = 2
+
+[node name="LeftMenu" type="MarginContainer" parent="TabContainer/Quest"]
+layout_mode = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/LeftMenu"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_uiffq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Save" type="Button" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Save"
+
+[node name="Load" type="Button" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Load
+"
+
+[node name="New" type="Button" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "New
+"
+
+[node name="PanelContainer2" type="PanelContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+theme = SubResource("Theme_uiffq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer2"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer2/MarginContainer"]
+layout_mode = 2
+
+[node name="LineEdit" type="LineEdit" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+placeholder_text = "Search ..."
+
+[node name="ItemList" type="ItemList" parent="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer2/MarginContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="Workbech" type="MarginContainer" parent="TabContainer/Quest"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/Workbech"]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="TabContainer/Quest/Workbech/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_uiffq")
+
+[node name="MarginContainer" type="MarginContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Quest ID:"
+
+[node name="Label2" type="Label" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Quest series: "
+
+[node name="Label3" type="Label" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer"]
+layout_mode = 2
+text = "Quest name: "
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="QuestID" type="Label" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+text = "0
+"
+
+[node name="QuestSeries" type="LineEdit" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+placeholder_text = "Name of Quest Series"
+
+[node name="QuestName" type="LineEdit" parent="TabContainer/Quest/Workbech/VBoxContainer/PanelContainer/MarginContainer/HBoxContainer2/VBoxContainer2"]
+layout_mode = 2
+placeholder_text = "Quest Name"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="TabContainer/Quest/Workbech/VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Requirements" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("3_4biv7")]
+layout_mode = 2
+
+[node name="Start" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("4_v7dgy")]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Objectives" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("5_dyqg8")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="End" parent="TabContainer/Quest/Workbech/VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("6_pn2ov")]
+layout_mode = 2
 
 [connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/New" to="TabContainer/Dialogue" method="_on_new_pressed"]
 [connection signal="pressed" from="TabContainer/Dialogue/MarginContainer/VBoxContainer/Menu/Save" to="TabContainer/Dialogue" method="_on_save_pressed"]

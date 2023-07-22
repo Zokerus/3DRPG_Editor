@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://dehqcb6wmht8h"]
+
+[node name="NPC Trigger" type="BoxContainer"]
+vertical = true
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "NPC"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Dialogue"
+
+[node name="Dialoguename" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="Edit" type="Button" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+text = "Edit
+"

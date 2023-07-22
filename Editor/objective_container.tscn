@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://se14s8hw8tuw"]
+
+[node name="ObjectiveContainer" type="VBoxContainer"]
+
+[node name="HSeparator32" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="ObjectiveType" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="ObjectiveType"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Type"
+
+[node name="OptionButton" type="OptionButton" parent="ObjectiveType"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3

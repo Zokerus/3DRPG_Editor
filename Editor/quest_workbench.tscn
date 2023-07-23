@@ -1,0 +1,122 @@
+[gd_scene load_steps=8 format=3 uid="uid://531tdoy6cvog"]
+
+[ext_resource type="Script" path="res://Editor/quest_workbench.gd" id="1_2fgsl"]
+[ext_resource type="PackedScene" uid="uid://dxdfswhen6xjn" path="res://Editor/requirements.tscn" id="1_mpco8"]
+[ext_resource type="PackedScene" uid="uid://cw8a0wplbe4qw" path="res://Editor/start.tscn" id="2_wa6iw"]
+[ext_resource type="PackedScene" uid="uid://1gmaxa56qcfh" path="res://Editor/objectives.tscn" id="3_wibmi"]
+[ext_resource type="PackedScene" uid="uid://dtyd2nmhycxm8" path="res://Editor/end.tscn" id="4_e7ol5"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
+bg_color = Color(0.6, 0.6, 0.6, 0.607843)
+border_width_left = 3
+border_width_top = 3
+border_width_right = 3
+border_width_bottom = 2
+border_blend = true
+
+[sub_resource type="Theme" id="Theme_uiffq"]
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_l0bgg")
+
+[node name="Workbech" type="MarginContainer"]
+offset_right = 1518.0
+offset_bottom = 811.0
+size_flags_horizontal = 3
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+script = ExtResource("1_2fgsl")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_uiffq")
+
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+layout_mode = 2
+theme_override_constants/margin_left = 5
+theme_override_constants/margin_top = 5
+theme_override_constants/margin_right = 5
+theme_override_constants/margin_bottom = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Quest ID:"
+
+[node name="QuestID" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0
+"
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Quest series: "
+
+[node name="QuestSeries" type="LineEdit" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Name of Quest Series"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(110, 0)
+layout_mode = 2
+text = "Quest name: "
+
+[node name="QuestName" type="LineEdit" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+size_flags_horizontal = 3
+placeholder_text = "Quest Name"
+
+[node name="ScrollContainer" type="ScrollContainer" parent="VBoxContainer"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Requirements" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_mpco8")]
+layout_mode = 2
+
+[node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+layout_mode = 2
+
+[node name="Start" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("2_wa6iw")]
+layout_mode = 2
+
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="Objectives" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("3_wibmi")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+
+[node name="End" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_e7ol5")]
+layout_mode = 2
+
+[connection signal="request_quest_list" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer/Requirements" to="." method="_on_requirements_request"]

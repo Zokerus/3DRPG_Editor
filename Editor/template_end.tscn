@@ -1,0 +1,28 @@
+[gd_scene load_steps=3 format=3 uid="uid://boi4pgufyewa0"]
+
+[ext_resource type="Script" path="res://Editor/template_end.gd" id="1_xloqy"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="2_n5du7"]
+
+[node name="Template_End" type="VBoxContainer"]
+script = ExtResource("1_xloqy")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "End #1"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "x"
+
+[node name="NPC Trigger" parent="." instance=ExtResource("2_n5du7")]
+layout_mode = 2
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

@@ -1,4 +1,7 @@
-[gd_scene load_steps=3 format=3 uid="uid://dtyd2nmhycxm8"]
+[gd_scene load_steps=5 format=3 uid="uid://dtyd2nmhycxm8"]
+
+[ext_resource type="Script" path="res://Editor/end.gd" id="1_2nrt6"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_jhax0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -14,6 +17,7 @@ PanelContainer/styles/panel = SubResource("StyleBoxFlat_l0bgg")
 [node name="End" type="PanelContainer"]
 custom_minimum_size = Vector2(0, 230)
 theme = SubResource("Theme_uiffq")
+script = ExtResource("1_2nrt6")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -32,38 +36,20 @@ text = "End"
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(75, 0)
+[node name="NPC Trigger" parent="MarginContainer/VBoxContainer/VBoxContainer" instance=ExtResource("1_jhax0")]
 layout_mode = 2
-text = "NPC"
-
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
 
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(75, 0)
-layout_mode = 2
-text = "Dialogue"
-
-[node name="Dialoguename" type="LineEdit" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+[node name="Add" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="Edit" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "Edit
-"
+text = "Add"
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -73,7 +59,9 @@ layout_mode = 2
 text = "Description"
 
 [node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 50)
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Description..."
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]

@@ -1,4 +1,6 @@
-[gd_scene load_steps=3 format=3 uid="uid://dxdfswhen6xjn"]
+[gd_scene load_steps=4 format=3 uid="uid://dxdfswhen6xjn"]
+
+[ext_resource type="Script" path="res://Editor/requirements.gd" id="1_irs72"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -12,8 +14,8 @@ border_blend = true
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_l0bgg")
 
 [node name="Requirements" type="PanelContainer"]
-custom_minimum_size = Vector2(0, 230)
 theme = SubResource("Theme_uiffq")
+script = ExtResource("1_irs72")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -51,6 +53,9 @@ layout_mode = 2
 layout_mode = 2
 text = "Completed Quests"
 
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 alignment = 1
@@ -58,14 +63,6 @@ alignment = 1
 [node name="Add" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
-text = "+"
+text = "Add"
 
-[node name="Del" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(50, 0)
-layout_mode = 2
-text = "-
-"
-
-[node name="ItemList" type="ItemList" parent="MarginContainer/VBoxContainer"]
-custom_minimum_size = Vector2(0, 75)
-layout_mode = 2
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]

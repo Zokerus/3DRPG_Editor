@@ -1,0 +1,23 @@
+[gd_scene load_steps=2 format=3 uid="uid://dtnno54stppw3"]
+
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_4x62b"]
+
+[node name="Delivery" type="BoxContainer"]
+vertical = true
+
+[node name="NPC Trigger" parent="." instance=ExtResource("1_4x62b")]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Target"
+
+[node name="Target" type="OptionButton" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3

@@ -1,15 +1,31 @@
-[gd_scene format=3 uid="uid://se14s8hw8tuw"]
+[gd_scene load_steps=2 format=3 uid="uid://se14s8hw8tuw"]
+
+[ext_resource type="Script" path="res://Editor/objective_container.gd" id="1_lu18k"]
 
 [node name="ObjectiveContainer" type="VBoxContainer"]
+script = ExtResource("1_lu18k")
 
 [node name="HSeparator32" type="HSeparator" parent="."]
 layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Objective #1"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "x"
 
 [node name="ObjectiveType" type="HBoxContainer" parent="."]
 layout_mode = 2
 
 [node name="Label3" type="Label" parent="ObjectiveType"]
-custom_minimum_size = Vector2(75, 0)
+custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Type"
 
@@ -17,3 +33,19 @@ text = "Type"
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+item_count = 6
+popup/item_0/text = "Dialogue"
+popup/item_0/id = 0
+popup/item_1/text = "Hunt"
+popup/item_1/id = 1
+popup/item_2/text = "Escort"
+popup/item_2/id = 2
+popup/item_3/text = "Deliver"
+popup/item_3/id = 3
+popup/item_4/text = "Travel"
+popup/item_4/id = 4
+popup/item_5/text = "Trigger"
+popup/item_5/id = 5
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="item_selected" from="ObjectiveType/OptionButton" to="." method="_on_option_button_item_selected"]

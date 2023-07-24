@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://531tdoy6cvog"]
+[gd_scene load_steps=9 format=3 uid="uid://531tdoy6cvog"]
 
 [ext_resource type="Script" path="res://Editor/quest_workbench.gd" id="1_2fgsl"]
 [ext_resource type="PackedScene" uid="uid://dxdfswhen6xjn" path="res://Editor/requirements.tscn" id="1_mpco8"]
 [ext_resource type="PackedScene" uid="uid://cw8a0wplbe4qw" path="res://Editor/start.tscn" id="2_wa6iw"]
 [ext_resource type="PackedScene" uid="uid://1gmaxa56qcfh" path="res://Editor/objectives.tscn" id="3_wibmi"]
 [ext_resource type="PackedScene" uid="uid://dtyd2nmhycxm8" path="res://Editor/end.tscn" id="4_e7ol5"]
+[ext_resource type="PackedScene" uid="uid://cfgkbbsrleal5" path="res://Editor/rewards.tscn" id="6_n5fm2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -93,30 +94,39 @@ layout_mode = 2
 size_flags_horizontal = 3
 
 [node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="Requirements" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer" instance=ExtResource("1_mpco8")]
 layout_mode = 2
 
 [node name="VBoxContainer4" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="Start" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer4" instance=ExtResource("2_wa6iw")]
 layout_mode = 2
 
 [node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="Objectives" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer3" instance=ExtResource("3_wibmi")]
 layout_mode = 2
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
-custom_minimum_size = Vector2(300, 0)
+custom_minimum_size = Vector2(275, 0)
 layout_mode = 2
 
 [node name="End" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2" instance=ExtResource("4_e7ol5")]
 layout_mode = 2
 
+[node name="VBoxContainer5" type="VBoxContainer" parent="VBoxContainer/ScrollContainer/HBoxContainer"]
+custom_minimum_size = Vector2(275, 0)
+layout_mode = 2
+
+[node name="Rewards" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("6_n5fm2")]
+layout_mode = 2
+
 [connection signal="request_quest_list" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer/Requirements" to="." method="_on_requirements_request"]
+[connection signal="change_number_of_ends" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/End" to="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer5/Rewards" method="set_number_of_ends"]

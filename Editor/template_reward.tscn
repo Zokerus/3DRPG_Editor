@@ -1,0 +1,98 @@
+[gd_scene load_steps=2 format=3 uid="uid://cxtjshh74r4g7"]
+
+[ext_resource type="Script" path="res://Editor/template_reward.gd" id="1_qo8ap"]
+
+[node name="Template_Rewards" type="BoxContainer"]
+vertical = true
+script = ExtResource("1_qo8ap")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer5" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="HBoxContainer5"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Reward #1"
+
+[node name="Close" type="Button" parent="HBoxContainer5"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 0
+text = "x"
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="."]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "End #"
+
+[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+custom_minimum_size = Vector2(100, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+item_count = 1
+popup/item_0/text = "All Ends"
+popup/item_0/id = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Exp"
+
+[node name="Dialoguename" type="LineEdit" parent="HBoxContainer"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+placeholder_text = "Experience..."
+alignment = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Label2" type="Label" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(75, 0)
+layout_mode = 2
+text = "Gold"
+
+[node name="Dialoguename" type="LineEdit" parent="HBoxContainer3"]
+custom_minimum_size = Vector2(50, 0)
+layout_mode = 2
+size_flags_horizontal = 3
+text = "0"
+placeholder_text = "Gold..."
+alignment = 2
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 2
+text = "Items"
+horizontal_alignment = 1
+
+[node name="ItemList" type="ItemList" parent="."]
+custom_minimum_size = Vector2(0, 100)
+layout_mode = 2
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 1
+
+[node name="Add" type="Button" parent="HBoxContainer4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Add"
+
+[node name="Del" type="Button" parent="HBoxContainer4"]
+custom_minimum_size = Vector2(40, 0)
+layout_mode = 2
+text = "Del"
+
+[connection signal="pressed" from="HBoxContainer5/Close" to="." method="_on_close_pressed"]

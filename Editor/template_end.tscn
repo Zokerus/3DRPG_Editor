@@ -26,3 +26,4 @@ text = "x"
 layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
+[connection signal="press_edit_dialogue" from="NPC Trigger" to="." method="_on_npc_trigger_press_edit_dialogue"]

@@ -129,4 +129,6 @@ layout_mode = 2
 layout_mode = 2
 
 [connection signal="request_quest_list" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer/Requirements" to="." method="_on_requirements_request"]
+[connection signal="relay_edit_dialogue" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer4/Start" to="." method="_on_panel_relay_edit_dialogue"]
 [connection signal="change_number_of_ends" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/End" to="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer5/Rewards" method="set_number_of_ends"]
+[connection signal="relay_edit_dialogue" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/End" to="." method="_on_panel_relay_edit_dialogue"]

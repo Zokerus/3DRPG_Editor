@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://dehqcb6wmht8h"]
+[gd_scene load_steps=2 format=3 uid="uid://dehqcb6wmht8h"]
+
+[ext_resource type="Script" path="res://Editor/npc_trigger.gd" id="1_u27o1"]
 
 [node name="NPC Trigger" type="BoxContainer"]
 vertical = true
+script = ExtResource("1_u27o1")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -29,9 +32,12 @@ text = "Dialogue"
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+editable = false
 
 [node name="Edit" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Edit
 "
+
+[connection signal="pressed" from="HBoxContainer/Edit" to="." method="_on_edit_pressed"]

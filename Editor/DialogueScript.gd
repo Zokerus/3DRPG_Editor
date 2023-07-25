@@ -3,6 +3,7 @@ extends HBoxContainer
 ##Workspace & file dialog to save and load files
 @onready var file_dialog = $FileDialog
 @onready var graph_edit = $GraphEdit
+@onready var tab_container = $".."
 
 ##Graphnodes, to be used on the graph editor (visual scripting)
 var graph_nodes : Dictionary = {
@@ -15,6 +16,7 @@ var graph_nodes : Dictionary = {
 "Start" : preload("res://DialogueNodes/StartNode.tscn") }
 
 var dialogue : Dialogue
+var quest_node = null
 
 ## GraphNodes pressed event connected to one generic method with one parameter (button name)
 func _ready():
@@ -56,24 +58,38 @@ func _on_graph_edit_connection_request(from_node, from_port, to_node, to_port):
 ## delete all nodes and clear the dialogue for clean working area
 func _on_new_pressed():
 	dialogue = Dialogue.new()
+	quest_node = null
 	_on_graph_edit_delete_nodes_request(graph_edit.get_children())
 
 ## save the created graph/dialogue
 func _on_save_pressed():
-	file_dialog.file_mode = file_dialog.FILE_MODE_SAVE_FILE
-	file_dialog.access = file_dialog.ACCESS_RESOURCES
-	file_dialog.popup_centered()
+	if quest_node == null:
+		file_dialog.file_mode = file_dialog.FILE_MODE_SAVE_FILE
+		file_dialog.access = file_dialog.ACCESS_RESOURCES
+		file_dialog.popup_centered()
+	else:
+		save_data("")
 	
 func _on_load_pressed():
 	file_dialog.file_mode = file_dialog.FILE_MODE_OPEN_FILE
 	file_dialog.access = file_dialog.ACCESS_RESOURCES
 	file_dialog.popup_centered()
 
+func _on_workbench_relay_edit_dialogue(node):
+	_on_new_pressed()
+	quest_node = node
+	dialogue = node.dialogue
+	tab_container.current_tab = 0
+	load_data()
+
 func _on_file_dialog_file_selected(path):
 	if file_dialog.file_mode == file_dialog.FILE_MODE_SAVE_FILE:	## Save a file
 		save_data(path)
 	else:	## Load a file
-		load_data(path)
+		quest_node = null
+		if ResourceLoader.exists(path):	# check file validity
+			dialogue = ResourceLoader.load(path)
+			load_data()
 
 func save_data(file_path : String):
 	if !dialogue:
@@ -116,11 +132,10 @@ func save_data(file_path : String):
 	
 	if file_path != "":
 		ResourceSaver.save(dialogue, file_path) ## save data on disk
+	elif quest_node != null:
+		quest_node.dialogue = dialogue
 
-func load_data(file_path : String):
-	if ResourceLoader.exists(file_path):	# check file validity
-		dialogue = ResourceLoader.load(file_path)
-	
+func load_data():
 	if dialogue == null:	## check data in resource
 		dialogue = Dialogue.new()	##if not valid, create new dialogue resource
 		return	## leave method
@@ -156,5 +171,3 @@ func load_node(node : GraphNode, data : Dictionary):
 	
 	## set global position ind graph_edit, only needed in editor
 	add_node_to_graph(node, Vector2(data["offset_x"],data["offset_y"]), false)
-
-

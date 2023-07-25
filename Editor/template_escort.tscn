@@ -1,9 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dtnno54stppw3"]
+[gd_scene load_steps=3 format=3 uid="uid://dtnno54stppw3"]
 
 [ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_4x62b"]
+[ext_resource type="Script" path="res://Editor/template_escort.gd" id="1_nncah"]
 
 [node name="Delivery" type="BoxContainer"]
 vertical = true
+script = ExtResource("1_nncah")
 
 [node name="NPC Trigger" parent="." instance=ExtResource("1_4x62b")]
 layout_mode = 2
@@ -21,3 +23,5 @@ text = "Target"
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
+
+[connection signal="press_edit_dialogue" from="NPC Trigger" to="." method="_on_npc_trigger_press_edit_dialogue"]

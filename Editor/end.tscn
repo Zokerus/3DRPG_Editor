@@ -64,4 +64,5 @@ layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Description..."
 
+[connection signal="press_edit_dialogue" from="MarginContainer/VBoxContainer/VBoxContainer/NPC Trigger" to="." method="_on_npc_trigger_press_edit_dialogue"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]

@@ -14,6 +14,8 @@ var objective_templates : Dictionary = {
 @onready var option_button = $ObjectiveType/OptionButton
 @onready var label = $HBoxContainer/Label
 
+signal relay_edit_dialogue(node)
+
 var template = null
 
 func _ready():
@@ -28,6 +30,8 @@ func _on_option_button_item_selected(index):
 		
 	if objective_templates.has(option_button.get_item_text(index)):	## Match optionbutton selection to enum
 		template = objective_templates[option_button.get_item_text(index)].instantiate()	## load and instantiate matching template
+		if template.has_signal("press_edit_dialogue"):
+			template.press_edit_dialogue.connect(_on_press_edit_dialogue)
 		if option_button.get_item_text(index) == OBJECTIVE_TYPES.keys()[OBJECTIVE_TYPES.Fight]:	## in case of kill quest, use fight template and set the "kill" boolean to true
 			template.kill = true
 		add_child(template)	## add template to tree
@@ -37,3 +41,6 @@ func _on_button_pressed():	## close the objective
 
 func change_headline(number : int):
 	label.text = "Objective #" + str(number)
+
+func _on_press_edit_dialogue(node):
+	relay_edit_dialogue.emit(node)

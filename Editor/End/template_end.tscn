@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://boi4pgufyewa0"]
 
-[ext_resource type="Script" path="res://Editor/template_end.gd" id="1_xloqy"]
-[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="2_n5du7"]
+[ext_resource type="Script" path="res://Editor/End/template_end.gd" id="1_xloqy"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/Start/npc_trigger.tscn" id="2_n5du7"]
 
 [node name="Template_End" type="VBoxContainer"]
 script = ExtResource("1_xloqy")

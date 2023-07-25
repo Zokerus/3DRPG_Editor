@@ -1,11 +1,12 @@
 extends PanelContainer
 
 @onready var v_box_container = $MarginContainer/VBoxContainer/VBoxContainer
+@onready var description = $MarginContainer/VBoxContainer/Description
 
 signal change_number_of_ends(number)
 signal relay_edit_dialogue(node)
 
-var template_end = preload("res://Editor/template_end.tscn")
+var template_end = preload("res://Editor/End/template_end.tscn")
 
 func _on_add_pressed():
 	var template = template_end.instantiate()
@@ -25,3 +26,10 @@ func _on_template_extied_tree():
 
 func _on_npc_trigger_press_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
+
+func get_quest_data(quest: Quest):
+	quest.end_npc.clear()
+	for end in v_box_container.get_children():
+		quest.end_npc.append(end.get_data())
+	
+	quest.end_description = description.text

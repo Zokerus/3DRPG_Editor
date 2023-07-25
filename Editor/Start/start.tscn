@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://cw8a0wplbe4qw"]
 
-[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_k6np7"]
-[ext_resource type="Script" path="res://Editor/start.gd" id="1_wgvu1"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/Start/npc_trigger.tscn" id="1_k6np7"]
+[ext_resource type="Script" path="res://Editor/Start/start.gd" id="1_wgvu1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -60,7 +60,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Item"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="OptionItem" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -81,7 +81,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Marker"
 
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="OptionLocation" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -93,13 +93,13 @@ layout_mode = 2
 layout_mode = 2
 text = "Description"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+[node name="Description" type="TextEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Description..."
 
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_NPC" to="." method="_on_check_box_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_NPC" to="." method="_on_check_box_npc_pressed"]
 [connection signal="press_edit_dialogue" from="MarginContainer/VBoxContainer/NPC Trigger" to="." method="_on_npc_trigger_press_edit_dialogue"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_Item" to="." method="_on_check_box_pressed"]
-[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_Location" to="." method="_on_check_box_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_Item" to="." method="_on_check_box_item_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/CheckBox_Location" to="." method="_on_check_box_location_pressed"]

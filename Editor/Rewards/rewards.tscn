@@ -1,6 +1,7 @@
-[gd_scene load_steps=4 format=3 uid="uid://dxdfswhen6xjn"]
+[gd_scene load_steps=5 format=3 uid="uid://cfgkbbsrleal5"]
 
-[ext_resource type="Script" path="res://Editor/requirements.gd" id="1_irs72"]
+[ext_resource type="Script" path="res://Editor/Rewards/rewards.gd" id="1_l4r7u"]
+[ext_resource type="PackedScene" uid="uid://cxtjshh74r4g7" path="res://Editor/Rewards/template_reward.tscn" id="1_tvo14"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -13,9 +14,9 @@ border_blend = true
 [sub_resource type="Theme" id="Theme_uiffq"]
 PanelContainer/styles/panel = SubResource("StyleBoxFlat_l0bgg")
 
-[node name="Requirements" type="PanelContainer"]
+[node name="Rewards" type="PanelContainer"]
 theme = SubResource("Theme_uiffq")
-script = ExtResource("1_irs72")
+script = ExtResource("1_l4r7u")
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 layout_mode = 2
@@ -29,31 +30,15 @@ layout_mode = 2
 
 [node name="Label" type="Label" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
-text = "Quest Requirements"
+text = "Rewards"
 
-[node name="HSeparator" type="HSeparator" parent="MarginContainer/VBoxContainer"]
+[node name="RewardsContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+[node name="Template_Rewards" parent="MarginContainer/VBoxContainer/RewardsContainer" instance=ExtResource("1_tvo14")]
 layout_mode = 2
-
-[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-layout_mode = 2
-text = "Faction"
-
-[node name="OptionButton" type="OptionButton" parent="MarginContainer/VBoxContainer/HBoxContainer2"]
-custom_minimum_size = Vector2(100, 0)
-layout_mode = 2
-size_flags_horizontal = 3
 
 [node name="HSeparator2" type="HSeparator" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-
-[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer"]
-layout_mode = 2
-text = "Completed Quests"
-
-[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 
 [node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
@@ -65,4 +50,5 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 text = "Add"
 
+[connection signal="tree_exited" from="MarginContainer/VBoxContainer/RewardsContainer/Template_Rewards" to="." method="_on_template_rewards_tree_exited"]
 [connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]

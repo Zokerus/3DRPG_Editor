@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dtnno54stppw3"]
 
-[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_4x62b"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/Start/npc_trigger.tscn" id="1_4x62b"]
 [ext_resource type="Script" path="res://Editor/template_escort.gd" id="1_nncah"]
 
 [node name="Delivery" type="BoxContainer"]

@@ -1,11 +1,12 @@
 extends PanelContainer
 
 @onready var v_box_container = $MarginContainer/VBoxContainer/VBoxContainer
+@onready var option_faction = $MarginContainer/VBoxContainer/HBoxContainer2/OptionFaction
 
 signal request_quest_list(callable)
 
 var quest_list = null
-var template_required_quest = preload("res://Editor/template_required_quest.tscn")
+var template_required_quest = preload("res://Editor/Requirements/template_required_quest.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -27,3 +28,8 @@ func _on_template_extied_tree():
 	for template in v_box_container.get_children():
 		template.change_headline(index)
 		index = index + 1
+
+func get_quest_data(quest: Quest):
+	quest.faction = option_faction.get_item_text(option_faction.get_selected_id())
+	for required_quest in v_box_container.get_children():
+		required_quest.get_quest_data(quest)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://c83hed0b8xova"]
 
-[ext_resource type="Script" path="res://Editor/template_required_quest.gd" id="1_bap0d"]
+[ext_resource type="Script" path="res://Editor/Requirements/template_required_quest.gd" id="1_bap0d"]
 
 [node name="Required_Quest" type="BoxContainer"]
 vertical = true
@@ -30,7 +30,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Quest"
 
-[node name="OptionButton" type="LineEdit" parent="HBoxContainer2"]
+[node name="QuestID" type="LineEdit" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -45,7 +45,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "End"
 
-[node name="Target" type="OptionButton" parent="HBoxContainer"]
+[node name="EndID" type="OptionButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3

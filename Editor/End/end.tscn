@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://dtyd2nmhycxm8"]
 
-[ext_resource type="Script" path="res://Editor/end.gd" id="1_2nrt6"]
-[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/npc_trigger.tscn" id="1_jhax0"]
+[ext_resource type="Script" path="res://Editor/End/end.gd" id="1_2nrt6"]
+[ext_resource type="PackedScene" uid="uid://dehqcb6wmht8h" path="res://Editor/Start/npc_trigger.tscn" id="1_jhax0"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -58,7 +58,7 @@ layout_mode = 2
 layout_mode = 2
 text = "Description"
 
-[node name="TextEdit" type="TextEdit" parent="MarginContainer/VBoxContainer"]
+[node name="Description" type="TextEdit" parent="MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 size_flags_vertical = 3

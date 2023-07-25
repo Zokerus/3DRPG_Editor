@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://se14s8hw8tuw"]
 
-[ext_resource type="Script" path="res://Editor/objective_container.gd" id="1_lu18k"]
+[ext_resource type="Script" path="res://Editor/Objectives/objective_container.gd" id="1_lu18k"]
 
 [node name="ObjectiveContainer" type="VBoxContainer"]
 script = ExtResource("1_lu18k")
@@ -46,6 +46,9 @@ popup/item_4/text = "Travel"
 popup/item_4/id = 4
 popup/item_5/text = "Trigger"
 popup/item_5/id = 5
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 2
 
 [connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]
 [connection signal="item_selected" from="ObjectiveType/OptionButton" to="." method="_on_option_button_item_selected"]

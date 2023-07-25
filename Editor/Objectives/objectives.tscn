@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://1gmaxa56qcfh"]
 
-[ext_resource type="Script" path="res://Editor/objectives.gd" id="1_tusmr"]
+[ext_resource type="Script" path="res://Editor/Objectives/objectives.gd" id="1_tusmr"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)

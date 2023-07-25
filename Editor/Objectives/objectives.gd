@@ -1,6 +1,6 @@
 extends PanelContainer
 
-var objective_container = preload("res://Editor/objective_container.tscn")
+var objective_container = preload("res://Editor/Objectives/objective_container.tscn")
 
 @onready var line_edit = $MarginContainer/VBoxContainer/HBoxContainer/LineEdit
 @onready var v_box_container = $MarginContainer/VBoxContainer/VBoxContainer
@@ -24,3 +24,8 @@ func _on_objective_extied_tree():
 
 func _on_template_relay_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
+
+func get_quest_data(quest: Quest):
+	quest.objectives.clear()
+	for objective in v_box_container.get_children():
+		quest.objectives.append(objective.get_objective_data()) ##TODO: forthe time being only npc dialogue is prepared

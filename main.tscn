@@ -204,6 +204,7 @@ layout_mode = 2
 [connection signal="delete_nodes_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_delete_nodes_request"]
 [connection signal="disconnection_request" from="TabContainer/Dialogue/GraphEdit" to="TabContainer/Dialogue" method="_on_graph_edit_disconnection_request"]
 [connection signal="file_selected" from="TabContainer/Dialogue/FileDialog" to="TabContainer/Dialogue" method="_on_file_dialog_file_selected"]
+[connection signal="pressed" from="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer/Save" to="TabContainer/Quest" method="_on_save_pressed"]
 [connection signal="pressed" from="TabContainer/Quest/LeftMenu/VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/New" to="TabContainer/Quest" method="_on_new_pressed"]
 [connection signal="relay_edit_dialogue" from="TabContainer/Quest/Workbench" to="TabContainer/Dialogue" method="_on_workbench_relay_edit_dialogue"]
 [connection signal="request_quest_list" from="TabContainer/Quest/Workbench" to="TabContainer/Quest" method="_on_workbench_request_quest_list"]

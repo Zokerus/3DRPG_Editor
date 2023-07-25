@@ -1,11 +1,12 @@
-[gd_scene load_steps=9 format=3 uid="uid://531tdoy6cvog"]
+[gd_scene load_steps=10 format=3 uid="uid://531tdoy6cvog"]
 
 [ext_resource type="Script" path="res://Editor/quest_workbench.gd" id="1_2fgsl"]
-[ext_resource type="PackedScene" uid="uid://dxdfswhen6xjn" path="res://Editor/requirements.tscn" id="1_mpco8"]
-[ext_resource type="PackedScene" uid="uid://cw8a0wplbe4qw" path="res://Editor/start.tscn" id="2_wa6iw"]
-[ext_resource type="PackedScene" uid="uid://1gmaxa56qcfh" path="res://Editor/objectives.tscn" id="3_wibmi"]
-[ext_resource type="PackedScene" uid="uid://dtyd2nmhycxm8" path="res://Editor/end.tscn" id="4_e7ol5"]
-[ext_resource type="PackedScene" uid="uid://cfgkbbsrleal5" path="res://Editor/rewards.tscn" id="6_n5fm2"]
+[ext_resource type="PackedScene" uid="uid://dxdfswhen6xjn" path="res://Editor/Requirements/requirements.tscn" id="1_mpco8"]
+[ext_resource type="Script" path="res://Editor/QuestHeader.gd" id="2_i2wws"]
+[ext_resource type="PackedScene" uid="uid://cw8a0wplbe4qw" path="res://Editor/Start/start.tscn" id="2_wa6iw"]
+[ext_resource type="PackedScene" uid="uid://1gmaxa56qcfh" path="res://Editor/Objectives/objectives.tscn" id="3_wibmi"]
+[ext_resource type="PackedScene" uid="uid://dtyd2nmhycxm8" path="res://Editor/End/end.tscn" id="4_e7ol5"]
+[ext_resource type="PackedScene" uid="uid://cfgkbbsrleal5" path="res://Editor/Rewards/rewards.tscn" id="6_n5fm2"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_l0bgg"]
 bg_color = Color(0.6, 0.6, 0.6, 0.607843)
@@ -31,56 +32,59 @@ script = ExtResource("1_2fgsl")
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="VBoxContainer"]
+[node name="QuestHeader" type="PanelContainer" parent="VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_uiffq")
+script = ExtResource("2_i2wws")
 
-[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/QuestHeader"]
 layout_mode = 2
 theme_override_constants/margin_left = 5
 theme_override_constants/margin_top = 5
 theme_override_constants/margin_right = 5
 theme_override_constants/margin_bottom = 5
 
-[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer"]
 layout_mode = 2
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="Label" type="Label" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Quest ID:"
 
-[node name="QuestID" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="QuestID" type="Label" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
-text = "0
-"
 
-[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="Label2" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="Label2" type="Label" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Quest series: "
 
-[node name="QuestSeries" type="LineEdit" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer3"]
+[node name="QuestSeries" type="LineEdit" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Name of Quest Series"
 
-[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="OptionQuestSeries" type="OptionButton" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
 
-[node name="Label3" type="Label" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label3" type="Label" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer4"]
 custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Quest name: "
 
-[node name="QuestName" type="LineEdit" parent="VBoxContainer/PanelContainer/MarginContainer/VBoxContainer/HBoxContainer4"]
+[node name="QuestName" type="LineEdit" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer4"]
 layout_mode = 2
 size_flags_horizontal = 3
 placeholder_text = "Quest Name"
@@ -128,7 +132,9 @@ layout_mode = 2
 [node name="Rewards" parent="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer5" instance=ExtResource("6_n5fm2")]
 layout_mode = 2
 
+[connection signal="item_selected" from="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer3/OptionQuestSeries" to="VBoxContainer/QuestHeader" method="_on_option_quest_series_item_selected"]
 [connection signal="request_quest_list" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer/Requirements" to="." method="_on_requirements_request"]
 [connection signal="relay_edit_dialogue" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer4/Start" to="." method="_on_panel_relay_edit_dialogue"]
+[connection signal="relay_edit_dialogue" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer3/Objectives" to="." method="_on_panel_relay_edit_dialogue"]
 [connection signal="change_number_of_ends" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/End" to="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer5/Rewards" method="set_number_of_ends"]
 [connection signal="relay_edit_dialogue" from="VBoxContainer/ScrollContainer/HBoxContainer/VBoxContainer2/End" to="." method="_on_panel_relay_edit_dialogue"]

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://ddcxw53iu6yoj"]
 
-[ext_resource type="Script" path="res://Editor/template_fight.gd" id="1_hr2dy"]
+[ext_resource type="Script" path="res://Editor/Objectives/template_fight.gd" id="1_hr2dy"]
 
 [node name="Fight" type="BoxContainer"]
 vertical = true

@@ -15,3 +15,7 @@ func _on_new_pressed():
 
 func _on_workbench_request_quest_list(callable):
 	callable.call(quest_list)
+
+
+func _on_save_pressed():
+	workbench.save_data("")

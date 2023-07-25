@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://dehqcb6wmht8h"]
 
-[ext_resource type="Script" path="res://Editor/npc_trigger.gd" id="1_u27o1"]
+[ext_resource type="Script" path="res://Editor/Start/npc_trigger.gd" id="1_u27o1"]
 
 [node name="NPC Trigger" type="BoxContainer"]
 vertical = true
@@ -14,7 +14,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "NPC"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+[node name="OptionNPC" type="OptionButton" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3

@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://cxtjshh74r4g7"]
 
-[ext_resource type="Script" path="res://Editor/template_reward.gd" id="1_qo8ap"]
+[ext_resource type="Script" path="res://Editor/Rewards/template_reward.gd" id="1_qo8ap"]
 
 [node name="Template_Rewards" type="BoxContainer"]
 vertical = true
@@ -30,7 +30,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "End #"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+[node name="OptionEnds" type="OptionButton" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -48,7 +48,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Exp"
 
-[node name="Dialoguename" type="LineEdit" parent="HBoxContainer"]
+[node name="Experience" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -65,7 +65,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Gold"
 
-[node name="Dialoguename" type="LineEdit" parent="HBoxContainer3"]
+[node name="Gold" type="LineEdit" parent="HBoxContainer3"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3

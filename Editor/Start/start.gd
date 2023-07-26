@@ -12,19 +12,31 @@ extends PanelContainer
 
 signal relay_edit_dialogue(node)
 
+func _ready():
+	update_option_buttons()
+	
+func update_option_buttons():
+	option_item.clear()
+	for item in DataManager.quest_item_list:
+		option_item.add_item(DataManager.quest_item_list[item].name, item)
+	
+	option_location.clear()
+	for location in DataManager.location_list:
+		option_location.add_item(DataManager.location_list[location].name, location)
+
 func _on_npc_trigger_press_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
 
 func get_quest_data(quest: Quest):
 	if check_box_npc.is_pressed():
-		quest.quest_start_trigger = "NPC"
+		quest.start_trigger = "NPC"
 		quest.start_npc = npc_trigger.get_data()
 	elif check_box_item.is_pressed():
 		quest.start_item = option_item.get_item_text(option_item.get_selected_id())
-		quest.quest_start_trigger = "ITEM"
+		quest.start_trigger = "ITEM"
 	else:
 		quest.start_location = option_location.get_item_text(option_location.get_selected_id())
-		quest.quest_start_trigger = "LOCATION"
+		quest.start_trigger = "LOCATION"
 	
 	quest.start_description = description.text
 

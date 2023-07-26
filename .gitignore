@@ -1,5 +1,7 @@
 # Godot 4+ specific ignores
 .godot/
+Data/
+
 
 # Godot-specific ignores
 .import/
@@ -21,3 +23,5 @@ mono_crash.*.json
 .DS_Store
 *~
 *.blend1
+*.tres
+

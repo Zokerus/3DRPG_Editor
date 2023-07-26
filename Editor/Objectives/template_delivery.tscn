@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://cfegk3vjtfawr"]
+[gd_scene load_steps=2 format=3 uid="uid://cfegk3vjtfawr"]
+
+[ext_resource type="Script" path="res://Editor/Objectives/template_delivery.gd" id="1_36xtl"]
 
 [node name="Delivery" type="BoxContainer"]
 vertical = true
+script = ExtResource("1_36xtl")
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -11,7 +14,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Item"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+[node name="OptionItem" type="OptionButton" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -23,11 +26,11 @@ alignment = 1
 [node name="Label2" type="Label" parent="HBoxContainer"]
 custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
-text = "Target"
+text = "NPC"
 
-[node name="Target" type="OptionButton" parent="HBoxContainer"]
+[node name="OptionNPC" type="OptionButton" parent="HBoxContainer"]
 custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="item_selected" from="HBoxContainer2/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="HBoxContainer2/OptionItem" to="." method="_on_option_button_item_selected"]

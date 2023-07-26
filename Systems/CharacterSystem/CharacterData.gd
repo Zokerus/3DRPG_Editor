@@ -1,6 +1,7 @@
 extends Resource
-class_name Character_Data
+class_name CharacterData
 
+@export var id: int
 @export var name : String
 @export var strength : int
 @export var dexterity : int

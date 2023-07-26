@@ -11,7 +11,7 @@ var dialogue : Dialogue = null
 func _ready():
 	option_npc.clear()
 	for npc in DataManager.npc_list:
-		option_npc.add_item(npc.name)
+		option_npc.add_item(DataManager.npc_list[npc].name, npc)
 	dialogue = Dialogue.new()
 
 func _process(_delta):

@@ -55,9 +55,10 @@ custom_minimum_size = Vector2(110, 0)
 layout_mode = 2
 text = "Quest ID:"
 
-[node name="QuestID" type="Label" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer2"]
+[node name="QuestID" type="LineEdit" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
+placeholder_text = "Quest ID (unique)"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer"]
 layout_mode = 2
@@ -75,6 +76,10 @@ placeholder_text = "Name of Quest Series"
 [node name="OptionQuestSeries" type="OptionButton" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(500, 0)
 layout_mode = 2
+item_count = 1
+selected = 0
+popup/item_0/text = "None"
+popup/item_0/id = 0
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer/QuestHeader/MarginContainer/VBoxContainer"]
 layout_mode = 2

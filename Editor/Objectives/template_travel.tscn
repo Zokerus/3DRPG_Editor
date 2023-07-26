@@ -1,7 +1,10 @@
-[gd_scene format=3 uid="uid://c5ew4bfk52xx4"]
+[gd_scene load_steps=2 format=3 uid="uid://c5ew4bfk52xx4"]
+
+[ext_resource type="Script" path="res://Editor/Objectives/template_travel.gd" id="1_vh1kh"]
 
 [node name="Travel" type="BoxContainer"]
 vertical = true
+script = ExtResource("1_vh1kh")
 
 [node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

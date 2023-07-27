@@ -61,6 +61,16 @@ func save_quest_related_files(quest : Quest):
 		save_quest_npc(npc, quest.id)
 
 func save_quest_npc(npc_data: TaskDialogue, questID: int):
-	if !DataManager.npc_list[npc_data.npc_name].quest.has(questID):
-		DataManager.npc_list[npc_data.npc_name].quest.append(questID)
-		ResourceSaver.save(DataManager.npc_list[npc_data.npc_name], DataManager.npc_list[npc_data.npc_name].resource_path)
+	if !DataManager.npc_list[npc_data.npc_id].quest_id.has(questID):
+		DataManager.npc_list[npc_data.npc_id].quest_id.append(questID)
+		ResourceSaver.save(DataManager.npc_list[npc_data.npc_id], DataManager.npc_list[npc_data.npc_id].resource_path)
+
+func load_data(data: Quest):
+	quest_data = data
+	
+	quest_header.set_quest_data(quest_data)
+	requirements.set_quest_data(quest_data)
+	start.set_quest_data(quest_data)
+	objectives.set_quest_data(quest_data)
+	end.set_quest_data(quest_data)
+	rewards.set_quest_data(quest_data)

@@ -21,8 +21,8 @@ var template = null
 
 func _ready():
 	option_button.clear()
-	for types in OBJECTIVE_TYPES:	## Add all values/keys of object_types enum to the optionbutton
-		option_button.add_item(types)
+	for type in OBJECTIVE_TYPES:	## Add all values/keys of object_types enum to the optionbutton
+		option_button.add_item(type, OBJECTIVE_TYPES[type])
 	_on_option_button_item_selected(option_button.get_selected_id())	## set the standard selection and load matching template
 
 func _on_option_button_item_selected(index):
@@ -46,6 +46,10 @@ func change_headline(number : int):
 func _on_press_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
 
-func get_objective_data() -> Resource:
+func get_objective_data() -> Dictionary:
 	var data = template.get_data()
-	return data
+	return {"type":option_button.get_item_text(option_button.get_selected_id()), "data":data}
+
+func set_quest_data(objective_data):
+	option_button.select(option_button.get_item_index(OBJECTIVE_TYPES[objective_data["type"]]))
+	template.set_data(objective_data["data"])

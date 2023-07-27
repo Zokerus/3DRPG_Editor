@@ -34,9 +34,22 @@ func _on_file_dialog_file_selected(path):
 		workbench.save_data(path)
 		update_listbox_quest_list()
 	else:	## Load a file
-		pass # Replace with function body.
+		_on_new_pressed()
+		if ResourceLoader.exists(path):	# check file validity
+			var quest = ResourceLoader.load(path)
+			if !DataManager.quest_list.has(quest.id):
+				DataManager.quest_list[quest.id] = quest
+			workbench.load_data(DataManager.quest_list[quest.id])
 
 func update_listbox_quest_list():
 	listbox_quest.clear()
 	for quest in DataManager.quest_list:
 		listbox_quest.add_item(DataManager.quest_list[quest].name)
+	listbox_quest.sort_items_by_text()
+
+func _on_quest_list_item_activated(index):
+	var quest_name = quest_list.get_item_text(index)
+	for quest in DataManager.quest_list:
+		if DataManager.quest_list[quest].name == quest_name:
+			workbench.load_data(DataManager.quest_list[quest])
+			return

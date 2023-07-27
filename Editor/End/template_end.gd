@@ -16,3 +16,6 @@ func _on_npc_trigger_press_edit_dialogue(node):
 
 func get_data() -> TaskDialogue:
 	return npc_trigger.get_data()
+
+func set_data(end_data: TaskDialogue):
+	npc_trigger.set_data(end_data)

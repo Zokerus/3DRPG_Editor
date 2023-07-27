@@ -8,13 +8,15 @@ signal relay_edit_dialogue(node)
 
 var template_end = preload("res://Editor/End/template_end.tscn")
 
-func _on_add_pressed():
+func _on_add_pressed(end_data: TaskDialogue = null):
 	var template = template_end.instantiate()
 	v_box_container.add_child(template)
 	template.tree_exited.connect(_on_template_extied_tree)
 	template.relay_edit_dialogue.connect(_on_npc_trigger_press_edit_dialogue)
 	template.change_headline(v_box_container.get_child_count())
 	change_number_of_ends.emit(v_box_container.get_child_count())
+	if end_data != null:
+		template.set_data(end_data)
 
 func _on_template_extied_tree():
 	var index = 1
@@ -33,3 +35,8 @@ func get_quest_data(quest: Quest):
 		quest.end_npc.append(end.get_data())
 	
 	quest.end_description = description.text
+
+func set_quest_data(quest: Quest):
+	for end in quest.end_npc:
+		_on_add_pressed(end)
+	description.text = quest.end_description

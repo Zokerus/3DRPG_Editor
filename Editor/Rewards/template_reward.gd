@@ -30,9 +30,18 @@ func get_data() -> Reward:
 	rewards.experience_points = int(experience.text)
 	rewards.gold = int(gold.text)
 	for index in item_list.item_count - 1:
-		var item = item_list.get_item_text(index)
+		var item = item_list.get_item_metadata(index)
 		if rewards.items.has(item):
 			rewards.items[item] = rewards.items[item] + 1
 		else:
 			rewards.items[item] = 1
 	return rewards
+
+func set_data(reward_data: Reward):
+	option_ends.select(option_ends.get_item_index(reward_data.end_id))
+	experience.text = str(reward_data.experience_points)
+	gold.text = str(reward_data.gold)
+	for item in reward_data.items:
+		for count in reward_data.items[item]:	## TODO Display the item count 
+			var index = item_list.add_item(item)	##TODO: for now. the ItemID is displayed, this must be changed to ItemName
+			item_list.set_item_metadata(index, item)	## Put the ItemID as metadata

@@ -1,16 +1,17 @@
-[gd_resource type="Resource" script_class="NPC_Data" load_steps=2 format=3 uid="uid://b1q8a6k2c0o8l"]
+[gd_resource type="Resource" script_class="NpcData" load_steps=2 format=3]
 
-[ext_resource type="Script" path="res://Systems/CharacterSystem/NPC.gd" id="1_fivv0"]
+[ext_resource type="Script" path="res://Systems/CharacterSystem/NpcData.gd" id="1_fivv0"]
 
 [resource]
 script = ExtResource("1_fivv0")
-quest = []
+quest_id = [0]
+id = 0
 name = "Mud"
 strength = 5
 dexterity = 5
 intelligence = 5
 charisma = 5
 level = 1
-exp = 0
+experience = 0
 health_bonus = 0
 mana_bonus = 0

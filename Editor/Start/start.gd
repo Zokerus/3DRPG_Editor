@@ -28,17 +28,30 @@ func _on_npc_trigger_press_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
 
 func get_quest_data(quest: Quest):
-	if check_box_npc.is_pressed():
-		quest.start_trigger = "NPC"
-		quest.start_npc = npc_trigger.get_data()
+	if check_box_location.is_pressed():
+		quest.start_location_id = option_location.get_selected_id()
+		quest.start_trigger = "LOCATION"
 	elif check_box_item.is_pressed():
-		quest.start_item = option_item.get_item_text(option_item.get_selected_id())
+		quest.start_item_id = option_item.get_selected_id()
 		quest.start_trigger = "ITEM"
 	else:
-		quest.start_location = option_location.get_item_text(option_location.get_selected_id())
-		quest.start_trigger = "LOCATION"
+		quest.start_trigger = "NPC"
+		quest.start_npc = npc_trigger.get_data()
 	
 	quest.start_description = description.text
+
+func set_quest_data(quest: Quest):
+	match quest.start_trigger:
+		"NPC":
+			check_box_npc.set_pressed(true)
+			npc_trigger.set_data(quest.start_npc)
+		"Item":
+			check_box_item.set_pressed(true)
+			option_item.select(option_item.get_item_index(quest.start_item_id))
+		"Location":
+			check_box_location.set_pressed(true)
+			option_item.select(option_item.get_item_index(quest.start_item_id))
+	description.text = quest.start_description
 
 func _on_check_box_npc_pressed():
 	npc_trigger.visible = check_box_npc.is_pressed()

@@ -23,6 +23,10 @@ func _on_edit_pressed():
 
 func get_data() -> TaskDialogue:
 	var data : TaskDialogue = TaskDialogue.new()
-	data.npc_name = option_npc.get_item_text(option_npc.get_selected_id())
+	data.npc_id = option_npc.get_selected_id()
 	data.dialogue = dialogue
 	return data
+
+func set_data(start_npc: TaskDialogue):
+	option_npc.select(option_npc.get_item_index(start_npc.npc_id))
+	dialogue = start_npc.dialogue

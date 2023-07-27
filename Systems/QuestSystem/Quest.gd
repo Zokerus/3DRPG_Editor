@@ -11,8 +11,8 @@ class_name Quest
 # * START
 @export_enum("NPC", "ITEM", "LOCATION") var start_trigger: String = "NPC"
 @export var start_npc:  TaskDialogue
-@export var start_item: int
-@export var start_location: String
+@export var start_item_id: int
+@export var start_location_id: int
 @export_multiline var start_description: String
 # * OBJECTIVES
 @export var objectives: Array

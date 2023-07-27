@@ -17,6 +17,11 @@ func get_quest_data(quest: Quest):
 #	quest_id.text = quest_name.text.replacen(" ", "_").to_lower()
 	quest.id = quest_id.text
 
+func set_quest_data(quest: Quest):
+	quest_name.text = quest.name
+	quest_series.text = quest.quest_series
+	quest_id.text = str(quest.id)
+	
 func update_option_quest_series():
 	option_quest_series.clear()
 	option_quest_series.add_item("None")

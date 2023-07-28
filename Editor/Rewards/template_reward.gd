@@ -4,7 +4,8 @@ extends BoxContainer
 @onready var option_ends = $HBoxContainer2/OptionEnds
 @onready var experience = $HBoxContainer/Experience
 @onready var gold = $HBoxContainer3/Gold
-@onready var item_list = $ItemList
+@onready var table = $Table
+
 
 func change_headline(number : int):
 	label.text = "Reward #" + str(number)
@@ -29,19 +30,20 @@ func get_data() -> Reward:
 	rewards.end_id = option_ends.get_selected_id()
 	rewards.experience_points = int(experience.text)
 	rewards.gold = int(gold.text)
-	for index in item_list.item_count - 1:
-		var item = item_list.get_item_metadata(index)
-		if rewards.items.has(item):
-			rewards.items[item] = rewards.items[item] + 1
-		else:
-			rewards.items[item] = 1
+	for item in table.get_items():
+		rewards.items[item.get_id()] = item.get_item_count()
 	return rewards
 
 func set_data(reward_data: Reward):
 	option_ends.select(option_ends.get_item_index(reward_data.end_id))
 	experience.text = str(reward_data.experience_points)
 	gold.text = str(reward_data.gold)
-	for item in reward_data.items:
-		for count in reward_data.items[item]:	## TODO Display the item count 
-			var index = item_list.add_item(item)	##TODO: for now. the ItemID is displayed, this must be changed to ItemName
-			item_list.set_item_metadata(index, item)	## Put the ItemID as metadata
+	for item_id in reward_data.items:
+			var index = table.add_item(item_id)	##TODO: for now. the ItemID is displayed, this must be changed to ItemName
+			table.get_item(index).set_item_count(reward_data.items[item_id])	## Put the ItemID as metadata
+
+func _on_add_pressed():
+	table.add_item("Sword",)
+
+func _on_del_pressed():
+	table.remove_selected_item()

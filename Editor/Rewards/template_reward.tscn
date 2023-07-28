@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://cxtjshh74r4g7"]
+[gd_scene load_steps=3 format=3 uid="uid://cxtjshh74r4g7"]
 
 [ext_resource type="Script" path="res://Editor/Rewards/template_reward.gd" id="1_qo8ap"]
+[ext_resource type="PackedScene" uid="uid://beumowlduiyym" path="res://Editor/Table/table.tscn" id="2_7e4cp"]
 
 [node name="Template_Rewards" type="BoxContainer"]
 vertical = true
@@ -78,9 +79,11 @@ layout_mode = 2
 text = "Items"
 horizontal_alignment = 1
 
-[node name="ItemList" type="ItemList" parent="."]
+[node name="Table" parent="." instance=ExtResource("2_7e4cp")]
 custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+minimum_column_width = 90
+overrun_state = 1
 
 [node name="HBoxContainer4" type="HBoxContainer" parent="."]
 layout_mode = 2
@@ -97,3 +100,5 @@ layout_mode = 2
 text = "Del"
 
 [connection signal="pressed" from="HBoxContainer5/Close" to="." method="_on_close_pressed"]
+[connection signal="pressed" from="HBoxContainer4/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="HBoxContainer4/Del" to="." method="_on_del_pressed"]

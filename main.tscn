@@ -33,7 +33,6 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Dialogue" type="HBoxContainer" parent="TabContainer"]
-visible = false
 layout_mode = 2
 script = ExtResource("1_5j8rx")
 
@@ -125,6 +124,7 @@ root_subfolder = "Data"
 filters = PackedStringArray("*.tres")
 
 [node name="Quest" type="HBoxContainer" parent="TabContainer"]
+visible = false
 layout_mode = 2
 script = ExtResource("3_8152s")
 

@@ -1,10 +1,10 @@
-[gd_resource type="Resource" script_class="NpcData" load_steps=2 format=3]
+[gd_resource type="Resource" script_class="NpcData" load_steps=2 format=3 uid="uid://bkhfxb2n0uf76"]
 
 [ext_resource type="Script" path="res://Systems/CharacterSystem/NpcData.gd" id="1_fivv0"]
 
 [resource]
 script = ExtResource("1_fivv0")
-quest_id = [0]
+quest_id = []
 id = 0
 name = "Mud"
 strength = 5

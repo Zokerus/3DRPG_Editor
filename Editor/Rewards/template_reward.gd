@@ -6,6 +6,7 @@ extends BoxContainer
 @onready var gold = $HBoxContainer3/Gold
 @onready var table = $Table
 
+var dialog_window = preload("res://Editor/Window/window.tscn")
 
 func change_headline(number : int):
 	label.text = "Reward #" + str(number)
@@ -39,11 +40,20 @@ func set_data(reward_data: Reward):
 	experience.text = str(reward_data.experience_points)
 	gold.text = str(reward_data.gold)
 	for item_id in reward_data.items:
-			var index = table.add_item(item_id)	##TODO: for now. the ItemID is displayed, this must be changed to ItemName
-			table.get_item(index).set_item_count(reward_data.items[item_id])	## Put the ItemID as metadata
+			var index = table.add_item(DataManager.item_list[item_id].name, item_id)	##TODO: for now. the ItemID is displayed, this must be changed to ItemName
+			table.get_item(index).set_item_count(reward_data.items[item_id])
 
 func _on_add_pressed():
-	table.add_item("Sword",)
+	var dialog = dialog_window.instantiate()
+	add_child(dialog)
+	dialog.title = "Select items"
+	dialog.position = Vector2(1250,get_global_mouse_position().y - 100)
+	dialog.load_data(DataManager.item_list)
+	dialog.items_selected.connect(_on_add_items)
+
+func _on_add_items(item_ids: Array[int]):
+	for id in item_ids:
+		table.add_item(DataManager.item_list[id].name, id)
 
 func _on_del_pressed():
 	table.remove_selected_item()

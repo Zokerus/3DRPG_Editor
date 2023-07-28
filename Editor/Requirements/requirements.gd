@@ -7,6 +7,7 @@ signal request_quest_list(callable)
 
 var quest_list = null
 var template_required_quest = preload("res://Editor/Requirements/template_required_quest.tscn")
+var dialog_window = preload("res://Editor/Window/window.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -16,14 +17,24 @@ func _ready():
 func set_quest_list(list):
 	quest_list = list
 
-func _on_add_pressed(quest_id: int = -1, end_id: int = -1):
-	## TODO: Check for selected quest in quest list
+func _on_add_pressed():
+	var dialog = dialog_window.instantiate()
+	add_child(dialog)
+	dialog.title = "Select quests"
+	dialog.position = Vector2(200,get_global_mouse_position().y - 100)
+	dialog.load_data(DataManager.quest_list)
+	dialog.items_selected.connect(_on_add_items)
+
+func _on_add_items(quest_ids: Array[int]):
+	for id in quest_ids:
+		add_quest(id)
+
+func add_quest(quest_id: int, end_id: int = 0):
 	var template = template_required_quest.instantiate()
 	v_box_container.add_child(template)
 	template.tree_exited.connect(_on_template_extied_tree)
 	template.change_headline(v_box_container.get_child_count())
-	if quest_id >= 0 and end_id >= 0:
-		template.set_quest_data(quest_id, end_id)
+	template.set_quest_data(quest_id, end_id)
 
 func _on_template_extied_tree():
 	var index = 1
@@ -43,4 +54,4 @@ func set_quest_data(quest: Quest):
 			break
 	
 	for key in quest.precompleted_quest:
-		_on_add_pressed(key, quest.precompleted_quest[key])
+		add_quest(key, quest.precompleted_quest[key])

@@ -1,0 +1,48 @@
+[gd_scene load_steps=2 format=3 uid="uid://8c23jwxd2aaa"]
+
+[ext_resource type="Script" path="res://Editor/Window/window.gd" id="1_qfltq"]
+
+[node name="Window" type="Window"]
+position = Vector2i(0, 36)
+size = Vector2i(300, 350)
+exclusive = true
+unresizable = true
+always_on_top = true
+popup_window = true
+script = ExtResource("1_qfltq")
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/margin_left = 10
+theme_override_constants/margin_top = 10
+theme_override_constants/margin_right = 10
+theme_override_constants/margin_bottom = 10
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="ItemList" type="ItemList" parent="MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(150, 290)
+layout_mode = 2
+select_mode = 1
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Add" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="Cancel" type="Button" parent="MarginContainer/VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Cancel"
+
+[connection signal="close_requested" from="." to="." method="_on_close_requested"]
+[connection signal="item_activated" from="MarginContainer/VBoxContainer/ItemList" to="." method="_on_item_list_item_activated"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Add" to="." method="_on_add_pressed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer/HBoxContainer/Cancel" to="." method="_on_close_requested"]

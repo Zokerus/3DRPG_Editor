@@ -51,5 +51,6 @@ func _on_quest_list_item_activated(index):
 	var quest_name = quest_list.get_item_text(index)
 	for quest in DataManager.quest_list:
 		if DataManager.quest_list[quest].name == quest_name:
+			_on_new_pressed()
 			workbench.load_data(DataManager.quest_list[quest])
 			return

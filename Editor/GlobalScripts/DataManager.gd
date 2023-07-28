@@ -3,7 +3,7 @@ extends Node
 var npc_list: Dictionary
 var quest_list: Dictionary
 var quest_series_list: Dictionary
-var quest_item_list: Dictionary
+var item_list: Dictionary
 var location_list: Dictionary
 var monster_list: Dictionary
 
@@ -35,7 +35,7 @@ func directory_contents(path):
 				elif resource is QuestLocation:
 					location_list[resource.id] = resource
 				elif resource is ItemData:
-					quest_item_list[resource.id] = resource
+					item_list[resource.id] = resource
 			file_name = directory.get_next()
 	else:
 		print("An error occurred when trying to access the path.")

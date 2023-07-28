@@ -17,8 +17,8 @@ func _ready():
 	
 func update_option_buttons():
 	option_item.clear()
-	for item in DataManager.quest_item_list:
-		option_item.add_item(DataManager.quest_item_list[item].name, item)
+	for item in DataManager.item_list:
+		option_item.add_item(DataManager.item_list[item].name, item)
 	
 	option_location.clear()
 	for location in DataManager.location_list:

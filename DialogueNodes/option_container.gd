@@ -15,4 +15,4 @@ func set_data(text: PackedStringArray):
 	text_edit.text = "\n".join(text)
 
 func get_data()-> PackedStringArray:
-	return text_edit.split("\n")
+	return text_edit.text.split("\n")

@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_y4hdc"]
 [ext_resource type="Script" path="res://DialogueNodes/ConditionNode.gd" id="2_it71w"]
 
-[node name="ConditionNode" type="GraphNode" groups=["OptionsNodes"]]
+[node name="ConditionNode" type="GraphNode" groups=["ConditionNodes"]]
 custom_minimum_size = Vector2(200, 0)
 offset_right = 150.0
 offset_bottom = 186.0

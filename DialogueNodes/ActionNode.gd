@@ -42,7 +42,7 @@ func set_data(data: Dictionary):
 
 func get_data()-> Dictionary:
 	var data = super()
-	data["action_type"] = option_type.get_item_text(option_type.selcted)
+	data["action_type"] = option_type.get_item_text(option_type.selected)
 	data["action_name"] = option_name.get_item_text(option_name.selected)
 	if option_name.get_item_text(option_name.selected) == "HandItem" and item_count.value > 0:
 		option_item.get_selected_id()

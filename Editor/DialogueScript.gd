@@ -13,7 +13,8 @@ var graph_nodes : Dictionary = {
 "Mark" : preload("res://DialogueNodes/MarkNode.tscn"),
 "Options" : preload("res://DialogueNodes/OptionsNode.tscn"),
 "Quest" : preload("res://DialogueNodes/QuestNode.tscn"),
-"Start" : preload("res://DialogueNodes/StartNode.tscn") }
+"Start" : preload("res://DialogueNodes/StartNode.tscn"),
+"Condition" :  preload("res://DialogueNodes/ConditionNode.tscn")}
 
 var dialogue : Dialogue
 var quest_node = null
@@ -116,7 +117,7 @@ func save_data(file_path : String):
 				dialog_node["go_to"].append([connection["from_port"], connection["to"], connection["to_port"]])
 		
 		## Character, that is speaking that part (NPC or Player(hero))
-		if node.title == "Dialogue" || node.title == "Option" || node.title == "Quest":
+		if node.title == "Dialogue":
 			dialog_node["character"] = node.find_child("OptionButton").get_selected_id()
 		
 		## Mark for jumping points

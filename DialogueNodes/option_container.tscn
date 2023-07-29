@@ -1,0 +1,31 @@
+[gd_scene load_steps=2 format=3 uid="uid://dvlruiyjv03f8"]
+
+[ext_resource type="Script" path="res://DialogueNodes/option_container.gd" id="1_r73my"]
+
+[node name="OptionContainer" type="VBoxContainer"]
+script = ExtResource("1_r73my")
+
+[node name="HSeparator" type="HSeparator" parent="."]
+layout_mode = 2
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 2
+alignment = 2
+
+[node name="Title" type="Label" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Option #1
+"
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+text = "x"
+
+[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+size_flags_vertical = 3
+placeholder_text = "Edit Text..."
+
+[connection signal="pressed" from="HBoxContainer/Button" to="." method="_on_button_pressed"]

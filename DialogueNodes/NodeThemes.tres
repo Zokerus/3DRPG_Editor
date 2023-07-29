@@ -1,11 +1,25 @@
-[gd_resource type="Theme" load_steps=17 format=3 uid="uid://8orjmu4x0av7"]
+[gd_resource type="Theme" load_steps=13 format=3 uid="uid://8orjmu4x0av7"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_o8dri"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqqy4"]
 content_margin_left = 4.0
 content_margin_top = 4.0
 content_margin_right = 4.0
 content_margin_bottom = 4.0
-bg_color = Color(0.0705882, 0.478431, 0.0745098, 0.6)
+bg_color = Color(0.682353, 0.164706, 0.184314, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_n6dlv"]
+content_margin_left = 18.0
+content_margin_top = 42.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.6)
+border_width_top = 30
+border_color = Color(0.682353, 0.164706, 0.184314, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -32,30 +46,6 @@ content_margin_bottom = 12.0
 bg_color = Color(0.101961, 0.101961, 0.101961, 0.6)
 border_width_top = 30
 border_color = Color(0.109804, 0.258824, 0.745098, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_b45t5"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.839216, 0, 0, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_kupln"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.258824, 0.8, 0.941176, 0.6)
 corner_radius_top_left = 3
 corner_radius_top_right = 3
 corner_radius_bottom_right = 3
@@ -166,52 +156,14 @@ corner_radius_bottom_right = 3
 corner_radius_bottom_left = 3
 corner_detail = 5
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1lj4l"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.352941, 0.564706, 0.611765, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ocbi4"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.443137, 0.219608, 0.552941, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bwojt"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.819608, 0.262745, 0.176471, 0.6)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
-
 [resource]
-DeliveryButton/base_type = &"Button"
-DeliveryButton/styles/normal = SubResource("StyleBoxFlat_o8dri")
+ConditionButton/base_type = &"Button"
+ConditionButton/styles/normal = SubResource("StyleBoxFlat_aqqy4")
+ConditionNode/base_type = &"GraphNode"
+ConditionNode/styles/frame = SubResource("StyleBoxFlat_n6dlv")
 DialogueButton/base_type = &"Button"
 DialogueButton/styles/normal = SubResource("StyleBoxFlat_pffbk")
 DialogueNode/styles/frame = SubResource("StyleBoxFlat_gyoem")
-KillButton/base_type = &"Button"
-KillButton/styles/normal = SubResource("StyleBoxFlat_b45t5")
-LearnButton/base_type = &"Button"
-LearnButton/styles/normal = SubResource("StyleBoxFlat_kupln")
 MarkButton/base_type = &"Button"
 MarkButton/styles/normal = SubResource("StyleBoxFlat_fd0mj")
 MarkNode/styles/frame = SubResource("StyleBoxFlat_ml50l")
@@ -224,9 +176,3 @@ QuestNode/base_type = &"GraphNode"
 QuestNode/styles/frame = SubResource("StyleBoxFlat_wa0et")
 StartButton/styles/normal = SubResource("StyleBoxFlat_a8s4d")
 StartNode/styles/frame = SubResource("StyleBoxFlat_pmpft")
-StealButton/base_type = &"Button"
-StealButton/styles/normal = SubResource("StyleBoxFlat_1lj4l")
-TravelButton/base_type = &"Button"
-TravelButton/styles/normal = SubResource("StyleBoxFlat_ocbi4")
-TriggerButton/base_type = &"Button"
-TriggerButton/styles/normal = SubResource("StyleBoxFlat_bwojt")

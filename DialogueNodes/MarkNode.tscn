@@ -23,15 +23,15 @@ slot/0/right_icon = null
 slot/0/draw_stylebox = true
 script = ExtResource("2_vu533")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="BoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2
 size_flags_vertical = 3
 
-[node name="Label" type="Label" parent="HBoxContainer"]
+[node name="Label" type="Label" parent="BoxContainer"]
 layout_mode = 2
 text = "#"
 
-[node name="TextEdit" type="LineEdit" parent="HBoxContainer"]
+[node name="TextEdit" type="LineEdit" parent="BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3

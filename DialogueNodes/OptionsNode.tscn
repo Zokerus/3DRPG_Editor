@@ -1,11 +1,13 @@
-[gd_scene load_steps=3 format=3 uid="uid://cdgluig8jd4gr"]
+[gd_scene load_steps=4 format=3 uid="uid://cdgluig8jd4gr"]
 
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_w04hw"]
-[ext_resource type="Script" path="res://DialogueNodes/GNode.gd" id="2_4kql5"]
+[ext_resource type="Script" path="res://DialogueNodes/OptionsNode.gd" id="2_y4g7y"]
+[ext_resource type="PackedScene" uid="uid://dvlruiyjv03f8" path="res://DialogueNodes/option_container.tscn" id="3_hnjml"]
 
 [node name="OptionsNode" type="GraphNode" groups=["OptionsNodes"]]
-offset_right = 200.0
-offset_bottom = 150.0
+custom_minimum_size = Vector2(200, 0)
+offset_right = 150.0
+offset_bottom = 186.0
 theme = ExtResource("1_w04hw")
 theme_type_variation = &"OptionsNode"
 title = "Options"
@@ -16,7 +18,7 @@ slot/0/left_enabled = true
 slot/0/left_type = 0
 slot/0/left_color = Color(1, 1, 1, 1)
 slot/0/left_icon = null
-slot/0/right_enabled = true
+slot/0/right_enabled = false
 slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
@@ -25,78 +27,36 @@ slot/1/left_enabled = false
 slot/1/left_type = 0
 slot/1/left_color = Color(1, 1, 1, 1)
 slot/1/left_icon = null
-slot/1/right_enabled = false
+slot/1/right_enabled = true
 slot/1/right_type = 0
 slot/1/right_color = Color(1, 1, 1, 1)
 slot/1/right_icon = null
 slot/1/draw_stylebox = true
-slot/2/left_enabled = false
-slot/2/left_type = 0
-slot/2/left_color = Color(1, 1, 1, 1)
-slot/2/left_icon = null
-slot/2/right_enabled = false
-slot/2/right_type = 0
-slot/2/right_color = Color(1, 1, 1, 1)
-slot/2/right_icon = null
-slot/2/draw_stylebox = true
-slot/3/left_enabled = false
-slot/3/left_type = 0
-slot/3/left_color = Color(1, 1, 1, 1)
-slot/3/left_icon = null
-slot/3/right_enabled = false
-slot/3/right_type = 0
-slot/3/right_color = Color(1, 1, 1, 1)
-slot/3/right_icon = null
-slot/3/draw_stylebox = true
-slot/4/left_enabled = false
-slot/4/left_type = 0
-slot/4/left_color = Color(1, 1, 1, 1)
-slot/4/left_icon = null
-slot/4/right_enabled = false
-slot/4/right_type = 0
-slot/4/right_color = Color(1, 1, 1, 1)
-slot/4/right_icon = null
-slot/4/draw_stylebox = true
-script = ExtResource("2_4kql5")
+script = ExtResource("2_y4g7y")
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+vertical = true
+
+[node name="Speaker" type="Label" parent="BoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-item_count = 2
-selected = 0
-popup/item_0/text = "NPC"
-popup/item_0/id = 0
-popup/item_1/text = "Hero"
-popup/item_1/id = 1
+text = "Hero"
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="TextEdit" type="TextEdit" parent="BoxContainer"]
 visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="HBoxContainer"]
-layout_mode = 2
-size_flags_horizontal = 3
-text = "Options:"
-
-[node name="SpinBox" type="SpinBox" parent="HBoxContainer"]
-layout_mode = 2
-min_value = 1.0
-value = 1.0
-
-[node name="HSeparator" type="HSeparator" parent="."]
-visible = false
-layout_mode = 2
-
-[node name="Label" type="Label" parent="."]
-visible = false
-layout_mode = 2
-text = "Option 1
-"
-
-[node name="TextEdit" type="TextEdit" parent="."]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Edit Text..."
 
+[node name="Add" type="Button" parent="BoxContainer"]
+layout_mode = 2
+text = "Add"
+
+[node name="OptionContainer" parent="." instance=ExtResource("3_hnjml")]
+layout_mode = 2
+
 [connection signal="resize_request" from="." to="." method="_on_resize_request"]
-[connection signal="value_changed" from="HBoxContainer/SpinBox" to="." method="_on_spin_box_value_changed"]
+[connection signal="pressed" from="BoxContainer/Add" to="." method="_on_add_pressed"]

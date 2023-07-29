@@ -21,18 +21,14 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-slot/1/left_enabled = false
-slot/1/left_type = 0
-slot/1/left_color = Color(1, 1, 1, 1)
-slot/1/left_icon = null
-slot/1/right_enabled = false
-slot/1/right_type = 0
-slot/1/right_color = Color(1, 1, 1, 1)
-slot/1/right_icon = null
-slot/1/draw_stylebox = true
 script = ExtResource("2_ig28y")
 
-[node name="OptionButton" type="OptionButton" parent="."]
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+vertical = true
+
+[node name="Speaker" type="OptionButton" parent="BoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
 item_count = 2
@@ -42,7 +38,7 @@ popup/item_0/id = 0
 popup/item_1/text = "Hero"
 popup/item_1/id = 1
 
-[node name="TextEdit" type="TextEdit" parent="."]
+[node name="TextEdit" type="TextEdit" parent="BoxContainer"]
 layout_mode = 2
 size_flags_vertical = 3
 placeholder_text = "Edit Text..."

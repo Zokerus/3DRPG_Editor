@@ -1,4 +1,30 @@
-[gd_resource type="Theme" load_steps=13 format=3 uid="uid://8orjmu4x0av7"]
+[gd_resource type="Theme" load_steps=15 format=3 uid="uid://8orjmu4x0av7"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pndeo"]
+content_margin_left = 4.0
+content_margin_top = 4.0
+content_margin_right = 4.0
+content_margin_bottom = 4.0
+bg_color = Color(0.890196, 0.780392, 0.12549, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_feaj0"]
+content_margin_left = 18.0
+content_margin_top = 42.0
+content_margin_right = 18.0
+content_margin_bottom = 12.0
+bg_color = Color(0.101961, 0.101961, 0.101961, 0.6)
+border_width_top = 30
+border_color = Color(0.890196, 0.780392, 0.12549, 0.6)
+corner_radius_top_left = 3
+corner_radius_top_right = 3
+corner_radius_bottom_right = 3
+corner_radius_bottom_left = 3
+corner_detail = 5
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_aqqy4"]
 content_margin_left = 4.0
@@ -157,6 +183,10 @@ corner_radius_bottom_left = 3
 corner_detail = 5
 
 [resource]
+ActionButton/base_type = &"Button"
+ActionButton/styles/normal = SubResource("StyleBoxFlat_pndeo")
+ActionNode/base_type = &"GraphNode"
+ActionNode/styles/frame = SubResource("StyleBoxFlat_feaj0")
 ConditionButton/base_type = &"Button"
 ConditionButton/styles/normal = SubResource("StyleBoxFlat_aqqy4")
 ConditionNode/base_type = &"GraphNode"

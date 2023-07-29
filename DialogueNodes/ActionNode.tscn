@@ -1,0 +1,64 @@
+[gd_scene load_steps=3 format=3 uid="uid://bccslnxht3k4x"]
+
+[ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_ju5cg"]
+[ext_resource type="Script" path="res://DialogueNodes/ActionNode.gd" id="2_tuy4s"]
+
+[node name="ActionNode" type="GraphNode" groups=["DialogueNodes"]]
+custom_minimum_size = Vector2(200, 0)
+offset_right = 200.0
+offset_bottom = 131.0
+theme = ExtResource("1_ju5cg")
+theme_type_variation = &"ActionNode"
+title = "Action"
+position_offset = Vector2(100, 100)
+show_close = true
+resizable = true
+slot/0/left_enabled = true
+slot/0/left_type = 0
+slot/0/left_color = Color(1, 1, 1, 1)
+slot/0/left_icon = null
+slot/0/right_enabled = true
+slot/0/right_type = 0
+slot/0/right_color = Color(1, 1, 1, 1)
+slot/0/right_icon = null
+slot/0/draw_stylebox = true
+script = ExtResource("2_tuy4s")
+
+[node name="BoxContainer" type="BoxContainer" parent="."]
+layout_mode = 2
+size_flags_vertical = 3
+vertical = true
+
+[node name="OptionType" type="OptionButton" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+selected = 0
+
+[node name="OptionName" type="OptionButton" parent="BoxContainer"]
+custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
+selected = 0
+
+[node name="OptionItem" type="OptionButton" parent="BoxContainer"]
+visible = false
+layout_mode = 2
+item_count = 1
+popup/item_0/text = "Sword"
+popup/item_0/id = 0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="BoxContainer"]
+visible = false
+layout_mode = 2
+
+[node name="Label" type="Label" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Number"
+
+[node name="ItemCount" type="SpinBox" parent="BoxContainer/HBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[connection signal="resize_request" from="." to="." method="_on_resize_request"]
+[connection signal="item_selected" from="BoxContainer/OptionType" to="." method="_on_option_type_item_selected"]
+[connection signal="item_selected" from="BoxContainer/OptionName" to="." method="_on_option_name_item_selected"]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ce62koxt6qf6r"]
 
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_j6wpn"]
-[ext_resource type="Script" path="res://DialogueNodes/GNode.gd" id="2_ig28y"]
+[ext_resource type="Script" path="res://DialogueNodes/DialogueNode.gd" id="2_pmlm7"]
 
 [node name="DialogueNode" type="GraphNode" groups=["DialogueNodes"]]
 offset_right = 200.0
@@ -21,7 +21,7 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-script = ExtResource("2_ig28y")
+script = ExtResource("2_pmlm7")
 
 [node name="BoxContainer" type="BoxContainer" parent="."]
 layout_mode = 2

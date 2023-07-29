@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://ctjoel6p8tnvu"]
 
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_11qs4"]
-[ext_resource type="Script" path="res://DialogueNodes/GNode.gd" id="2_c2xpp"]
+[ext_resource type="Script" path="res://DialogueNodes/JumpNode.gd" id="2_irubj"]
 
 [node name="JumpNode" type="GraphNode" groups=["JumpNodes"]]
 offset_right = 200.0
@@ -21,7 +21,7 @@ slot/0/right_type = 0
 slot/0/right_color = Color(1, 1, 1, 1)
 slot/0/right_icon = null
 slot/0/draw_stylebox = true
-script = ExtResource("2_c2xpp")
+script = ExtResource("2_irubj")
 
 [node name="BoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 2

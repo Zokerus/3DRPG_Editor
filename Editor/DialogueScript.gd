@@ -7,14 +7,15 @@ extends HBoxContainer
 
 ##Graphnodes, to be used on the graph editor (visual scripting)
 var graph_nodes : Dictionary = {
-"Dialogue" : preload("res://DialogueNodes/DialogueNode.tscn"),
+"Action": preload("res://DialogueNodes/ActionNode.tscn"),
+"Dialogue": preload("res://DialogueNodes/DialogueNode.tscn"),
 "End":  preload("res://DialogueNodes/EndNode.tscn"),
-"Jump" : preload("res://DialogueNodes/JumpNode.tscn"),
-"Mark" : preload("res://DialogueNodes/MarkNode.tscn"),
-"Options" : preload("res://DialogueNodes/OptionsNode.tscn"),
-"Quest" : preload("res://DialogueNodes/QuestNode.tscn"),
-"Start" : preload("res://DialogueNodes/StartNode.tscn"),
-"Condition" :  preload("res://DialogueNodes/ConditionNode.tscn")}
+"Jump": preload("res://DialogueNodes/JumpNode.tscn"),
+"Mark": preload("res://DialogueNodes/MarkNode.tscn"),
+"Options": preload("res://DialogueNodes/OptionsNode.tscn"),
+"Quest": preload("res://DialogueNodes/QuestNode.tscn"),
+"Start": preload("res://DialogueNodes/StartNode.tscn"),
+"Condition":  preload("res://DialogueNodes/ConditionNode.tscn")}
 
 var dialogue : Dialogue
 var quest_node = null
@@ -98,38 +99,12 @@ func save_data(file_path : String):
 	dialogue.data.clear()
 	
 	for node in graph_edit.get_children():
-		#Node Creation
-		var dialog_node = {}
-		dialog_node["id"] = node.name
-		dialog_node["type"] = node.title
-		
-		#Node Text
-		dialog_node["text"] = (node.find_child("TextEdit").text).split("\n")
-		
-		#Visual Offset, only for GraphEdit
-		dialog_node["offset_x"] = node.position_offset.x
-		dialog_node["offset_y"] = node.position_offset.y
-		
-		#Connections
-		dialog_node["go_to"] = []
-		for connection in graph_edit.get_connection_list():
-			if connection["from"] == node.name:
-				dialog_node["go_to"].append([connection["from_port"], connection["to"], connection["to_port"]])
-		
-		## Character, that is speaking that part (NPC or Player(hero))
-		if node.title == "Dialogue":
-			dialog_node["character"] = node.find_child("OptionButton").get_selected_id()
-		
-		## Mark for jumping points
-		if node.title == "Mark":
-			dialog_node["id"] = node.title + "Node" + str(node.find_child("TextEdit").text)
-		
-		## Pointer towards a quest, TODO: needs need adaption to quest system
-		if node.title == "Quest":
-			dialog_node["quest_id"] = node.find_child("QuestID").text
-		
 	# store data in dialogue resource
-		dialogue.data[dialog_node["id"]] = dialog_node
+		dialogue.data[node.name] = node.get_data()
+	
+	#Connections
+	for connection in graph_edit.get_connection_list():
+		dialogue.data[connection["from"]]["go_to"].append([connection["from_port"], connection["to"], connection["to_port"]])
 	
 	if file_path != "":
 		ResourceSaver.save(dialogue, file_path) ## save data on disk
@@ -143,7 +118,7 @@ func load_data():
 	
 	## loop all graph nodes and initiate them
 	for key in dialogue.data.keys():
-		load_node(graph_nodes[dialogue.data[key]["type"]] .instantiate(), dialogue.data[key])
+		load_node(graph_nodes[dialogue.data[key]["type"]].instantiate(), dialogue.data[key])
 	
 	## after init graph nodes, connect them
 	for key in dialogue.data.keys():
@@ -154,21 +129,8 @@ func load_data():
 
 ## load graph node detail data
 func load_node(node : GraphNode, data : Dictionary):
-	var text = ""
-	for line in data["text"]:
-		if text.length() > 0:
-			text = text + "\n"
-		text = text + line
-	node.find_child("TextEdit").text = text
 	node.name = data["id"]
-	
-	## select speaker
-	if node.title == "Dialogue" || node.title == "Option":
-		node.find_child("OptionButton").select(data["character"])
-	
-	## set QuestID, TODO, adapt to new QuestSystem
-	if node.title == "Quest":
-		node.find_child("QuestID").text = data["quest_id"]
-	
 	## set global position ind graph_edit, only needed in editor
 	add_node_to_graph(node, Vector2(data["offset_x"],data["offset_y"]), false)
+	node.set_data(data)
+#

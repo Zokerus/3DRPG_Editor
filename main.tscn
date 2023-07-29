@@ -86,6 +86,12 @@ theme = ExtResource("1_efubc")
 theme_type_variation = &"ConditionButton"
 text = "Condition"
 
+[node name="Action" type="Button" parent="TabContainer/Dialogue/MarginContainer/VBoxContainer/Nodes" groups=["NodeButtons"]]
+layout_mode = 2
+theme = ExtResource("1_efubc")
+theme_type_variation = &"ActionButton"
+text = "Action"
+
 [node name="Jump" type="Button" parent="TabContainer/Dialogue/MarginContainer/VBoxContainer/Nodes" groups=["NodeButtons"]]
 layout_mode = 2
 theme = ExtResource("1_efubc")

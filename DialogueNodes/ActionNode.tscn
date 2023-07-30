@@ -3,7 +3,7 @@
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_ju5cg"]
 [ext_resource type="Script" path="res://DialogueNodes/ActionNode.gd" id="2_tuy4s"]
 
-[node name="ActionNode" type="GraphNode" groups=["DialogueNodes"]]
+[node name="ActionNode" type="GraphNode" groups=["ActionNodes"]]
 custom_minimum_size = Vector2(200, 0)
 offset_right = 200.0
 offset_bottom = 131.0
@@ -32,12 +32,10 @@ vertical = true
 [node name="OptionType" type="OptionButton" parent="BoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-selected = 0
 
 [node name="OptionName" type="OptionButton" parent="BoxContainer"]
 custom_minimum_size = Vector2(0, 30)
 layout_mode = 2
-selected = 0
 
 [node name="OptionItem" type="OptionButton" parent="BoxContainer"]
 visible = false

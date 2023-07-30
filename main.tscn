@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://b1gwyghbc47h0"]
+[gd_scene load_steps=7 format=3 uid="uid://b1gwyghbc47h0"]
 
+[ext_resource type="Script" path="res://DialogueScript.gd" id="1_6p2lc"]
 [ext_resource type="Theme" uid="uid://8orjmu4x0av7" path="res://DialogueNodes/NodeThemes.tres" id="1_efubc"]
 [ext_resource type="Script" path="res://QuestScript.gd" id="3_8152s"]
 [ext_resource type="PackedScene" uid="uid://531tdoy6cvog" path="res://Editor/quest_workbench.tscn" id="3_i0onl"]
@@ -33,6 +34,7 @@ grow_vertical = 2
 
 [node name="Dialogue" type="HBoxContainer" parent="TabContainer"]
 layout_mode = 2
+script = ExtResource("1_6p2lc")
 
 [node name="MarginContainer" type="MarginContainer" parent="TabContainer/Dialogue"]
 layout_mode = 2

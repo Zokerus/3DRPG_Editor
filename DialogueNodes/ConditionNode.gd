@@ -33,7 +33,7 @@ func get_data()-> Dictionary:
 			data["quest_id"] = addition.get_selected_id()
 		"Level":
 			data["value"] = spin_box.value
-			data["comparing_sign"] = compare.get_item_text(compare.selected)
+			data["comparing_sign"] = compare.selected
 	
 	
 	return data
@@ -48,7 +48,4 @@ func set_data(data: Dictionary):
 			addition.select(addition.get_item_index(data["quest_id"]))
 		"Level":
 			spin_box.value = data["value"]
-			for index in compare.item_count -1:
-				if data["comparing_sign"] == compare.get_item_text(index):
-					compare.select(index)
-					break
+			compare.select(data["comparing_sign"])

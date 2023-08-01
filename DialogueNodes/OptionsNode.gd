@@ -21,6 +21,7 @@ func _on_option_container_tree_exited():
 
 func get_data()-> Dictionary:
 	var data: Dictionary = super()
+	data["character"]= 1
 	data["options"] = []
 	for child in get_children():
 		if child is OptionContainer:

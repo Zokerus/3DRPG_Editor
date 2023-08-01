@@ -12,4 +12,4 @@ func get_data()-> Dictionary:
 
 func set_data(data: Dictionary):
 	speaker.select(data["character"])
-	text_edit.text = "/n".join(data["text"])
+	text_edit.text = "\n".join(data["text"])

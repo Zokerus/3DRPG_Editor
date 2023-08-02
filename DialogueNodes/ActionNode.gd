@@ -6,7 +6,7 @@ extends GNode
 @onready var h_box_container = $BoxContainer/HBoxContainer
 @onready var item_count = $BoxContainer/HBoxContainer/ItemCount
 
-enum ACTIONTYPE{Signal}
+enum ACTIONTYPE{Signal, Quest}
 enum SIGNALS{DoScript, HandItem, OpenShop, TrainSkill}
 
 func _ready():
@@ -18,10 +18,13 @@ func _ready():
 		option_item.add_item(DataManager.item_list[item].name, item)
 
 func change_option_name_items(type_index):
+	option_name.clear()
 	if option_type.get_item_text(type_index) == "Signal":
 		for item in SIGNALS:
 			option_name.add_item(item, SIGNALS[item])
-
+	elif option_type.get_item_text(type_index) == "Quest":
+		option_name.add_item("Accept")
+		option_name.add_item("Decline")
 func _on_option_type_item_selected(index):
 	change_option_name_items(index)
 

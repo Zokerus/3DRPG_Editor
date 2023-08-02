@@ -15,6 +15,8 @@ func _on_new_pressed():
 	workbench.queue_free()
 	workbench = workbench_scene.instantiate()
 	add_child(workbench)
+	workbench.request_quest_list.connect(_on_workbench_request_quest_list)
+	workbench.relay_edit_dialogue.connect($"../Dialogue"._on_workbench_relay_edit_dialogue)
 
 func _on_workbench_request_quest_list(callable):
 	callable.call(quest_list)

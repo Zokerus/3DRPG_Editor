@@ -14,7 +14,7 @@ custom_minimum_size = Vector2(75, 0)
 layout_mode = 2
 text = "Type"
 
-[node name="OptionButton" type="OptionButton" parent="HBoxContainer2"]
+[node name="TargetType" type="OptionButton" parent="HBoxContainer2"]
 custom_minimum_size = Vector2(100, 0)
 layout_mode = 2
 size_flags_horizontal = 3
@@ -39,4 +39,4 @@ custom_minimum_size = Vector2(50, 0)
 layout_mode = 2
 size_flags_horizontal = 3
 
-[connection signal="item_selected" from="HBoxContainer2/OptionButton" to="." method="_on_option_button_item_selected"]
+[connection signal="item_selected" from="HBoxContainer2/TargetType" to="." method="_on_option_button_item_selected"]

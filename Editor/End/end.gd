@@ -33,10 +33,14 @@ func get_quest_data(quest: Quest):
 	quest.end_npc.clear()
 	for end in v_box_container.get_children():
 		quest.end_npc.append(end.get_data())
-	
 	quest.end_description = description.text
 
 func set_quest_data(quest: Quest):
-	for end in quest.end_npc:
-		_on_add_pressed(end)
+#	for end in quest.end_npc:
+#		_on_add_pressed(end)
+	for index in quest.end_npc.size():
+		if index > 0:
+			_on_add_pressed(quest.end_npc[index])
+		else:
+			v_box_container.get_child(0).set_data(quest.end_npc[0])
 	description.text = quest.end_description

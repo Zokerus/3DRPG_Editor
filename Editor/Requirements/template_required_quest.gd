@@ -13,7 +13,7 @@ func change_headline(number : int):
 	label.text = "Quest #" + str(number)
 
 func get_quest_data(quest_data: Quest):
-	quest_data.precompleted_quest[quest_id.text] = end_id.get_item_text(end_id.get_selected_id())
+	quest_data.precompleted_quest[int(quest_id.text)] = end_id.get_selected_id()
 
 func set_quest_data(_quest_id: int, _end_id: int = 0):
 	quest_id.text = str(_quest_id)

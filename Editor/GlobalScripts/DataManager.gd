@@ -1,11 +1,11 @@
 extends Node
 
-var npc_list: Dictionary
-var quest_list: Dictionary
-var quest_series_list: Dictionary
-var item_list: Dictionary
-var location_list: Dictionary
-var monster_list: Dictionary
+var npc_list: Dictionary = {}
+var quest_list: Dictionary = {}
+var quest_series_list: Dictionary = {}
+var item_list: Dictionary = {}
+var location_list: Dictionary = {}
+var monster_list: Dictionary = {}
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -30,7 +30,7 @@ func directory_contents(path):
 				elif resource is Quest:
 					quest_list[resource.id] = resource
 					quest_series_list[resource.quest_series] = resource.quest_series
-				elif resource is MonsterData:
+				elif resource is QuestMonsterData:
 					monster_list[resource.id] = resource
 				elif resource is QuestLocation:
 					location_list[resource.id] = resource

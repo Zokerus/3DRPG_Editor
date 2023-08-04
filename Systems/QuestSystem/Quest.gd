@@ -15,6 +15,7 @@ class_name Quest
 @export var start_location_id: int
 @export_multiline var start_description: String
 # * OBJECTIVES
+@export var objective_linear: bool
 @export var objectives: Array
 # * END
 @export var end_npc: Array[TaskDialogue]

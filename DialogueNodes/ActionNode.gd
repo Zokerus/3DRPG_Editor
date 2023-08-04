@@ -8,6 +8,7 @@ extends GNode
 
 enum ACTIONTYPE{Signal, Quest}
 enum SIGNALS{DoScript, HandItem, OpenShop, TrainSkill}
+enum QUEST_ACTIONS{Accept, Decline}
 
 func _ready():
 	super()
@@ -23,8 +24,8 @@ func change_option_name_items(type_index):
 		for item in SIGNALS:
 			option_name.add_item(item, SIGNALS[item])
 	elif option_type.get_item_text(type_index) == "Quest":
-		option_name.add_item("Accept")
-		option_name.add_item("Decline")
+		for item in QUEST_ACTIONS:
+			option_name.add_item(item, QUEST_ACTIONS[item])
 func _on_option_type_item_selected(index):
 	change_option_name_items(index)
 
@@ -38,7 +39,11 @@ func _on_option_name_item_selected(index):
 
 func set_data(data: Dictionary):
 	option_type.select(option_type.get_item_index(ACTIONTYPE[data["action_type"]]))
-	option_name.select(option_name.get_item_index(SIGNALS[data["action_name"]]))
+	option_type.item_selected.emit(option_type.selected)
+	if data["action_type"] == ACTIONTYPE.keys()[ACTIONTYPE.Signal]:
+		option_name.select(option_name.get_item_index(SIGNALS[data["action_name"]]))
+	else:
+		option_name.select(option_name.get_item_index(QUEST_ACTIONS[data["action_name"]]))
 	if data["action_name"] == "HandItem" and data.has("item_id"):
 		option_item.select(option_item.get_item_index(data["item_id"]))
 		item_count.value = data["count"]

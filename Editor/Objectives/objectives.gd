@@ -4,6 +4,7 @@ var objective_container = preload("res://Editor/Objectives/objective_container.t
 
 @onready var line_edit = $MarginContainer/VBoxContainer/HBoxContainer/LineEdit
 @onready var v_box_container = $MarginContainer/VBoxContainer/VBoxContainer
+@onready var check_box_linear = $MarginContainer/VBoxContainer/CheckBoxLinear
 
 signal relay_edit_dialogue(node)
 
@@ -28,10 +29,12 @@ func _on_template_relay_edit_dialogue(node):
 	relay_edit_dialogue.emit(node)
 
 func get_quest_data(quest: Quest):
+	quest.objective_linear = check_box_linear.is_pressed()
 	quest.objectives.clear()
 	for objective in v_box_container.get_children():
 		quest.objectives.append(objective.get_objective_data()) ##TODO: forthe time being only npc dialogue is prepared
 
 func set_quest_data(quest: Quest):
+	check_box_linear.set_pressed_no_signal(quest.objective_linear)
 	for objective in quest.objectives:
 		_on_button_pressed(objective)
